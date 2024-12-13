@@ -13,6 +13,154 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\123.svg",
+      "PackagePath": "staticwebassets\\img\\123.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_41.png",
+      "PackagePath": "staticwebassets\\img\\Group_41.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_44.png",
+      "PackagePath": "staticwebassets\\img\\Group_44.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_45.png",
+      "PackagePath": "staticwebassets\\img\\Group_45.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\address.svg",
+      "PackagePath": "staticwebassets\\img\\address.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\cactus.svg",
+      "PackagePath": "staticwebassets\\img\\cactus.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\cart.svg",
+      "PackagePath": "staticwebassets\\img\\cart.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\coats-2018.jpg",
+      "PackagePath": "staticwebassets\\img\\coats-2018.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\facebook.svg",
+      "PackagePath": "staticwebassets\\img\\facebook.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\footer.svg",
+      "PackagePath": "staticwebassets\\img\\footer.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\google.svg",
+      "PackagePath": "staticwebassets\\img\\google.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\image_17.svg",
+      "PackagePath": "staticwebassets\\img\\image_17.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\in.svg",
+      "PackagePath": "staticwebassets\\img\\in.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\kettle.svg",
+      "PackagePath": "staticwebassets\\img\\kettle.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\logo.svg",
+      "PackagePath": "staticwebassets\\img\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\mail.svg",
+      "PackagePath": "staticwebassets\\img\\mail.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\payments.png",
+      "PackagePath": "staticwebassets\\img\\payments.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\phone.svg",
+      "PackagePath": "staticwebassets\\img\\phone.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant-old.svg",
+      "PackagePath": "staticwebassets\\img\\plant-old.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant.svg",
+      "PackagePath": "staticwebassets\\img\\plant.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant1.png",
+      "PackagePath": "staticwebassets\\img\\plant1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant1.svg",
+      "PackagePath": "staticwebassets\\img\\plant1.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\01.jpeg",
+      "PackagePath": "staticwebassets\\img\\plants\\01.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\02.jpeg",
+      "PackagePath": "staticwebassets\\img\\plants\\02.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\03.jpeg",
+      "PackagePath": "staticwebassets\\img\\plants\\03.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\04.jpeg",
+      "PackagePath": "staticwebassets\\img\\plants\\04.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_10.png",
+      "PackagePath": "staticwebassets\\img\\plants\\image_10.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_20.png",
+      "PackagePath": "staticwebassets\\img\\plants\\image_20.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_7.png",
+      "PackagePath": "staticwebassets\\img\\plants\\image_7.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_8.png",
+      "PackagePath": "staticwebassets\\img\\plants\\image_8.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\search.svg",
+      "PackagePath": "staticwebassets\\img\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_1.jpg",
+      "PackagePath": "staticwebassets\\img\\slider_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_2.jpg",
+      "PackagePath": "staticwebassets\\img\\slider_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_3.jpg",
+      "PackagePath": "staticwebassets\\img\\slider_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\thank-you.svg",
+      "PackagePath": "staticwebassets\\img\\thank-you.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\auth.js",
+      "PackagePath": "staticwebassets\\js\\auth.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -243,6 +391,14 @@
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\lib\\package-lock.json",
+      "PackagePath": "staticwebassets\\lib\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\lib\\package.json",
+      "PackagePath": "staticwebassets\\lib\\package.json"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Plantshop.Microsoft.AspNetCore.StaticWebAssets.props",

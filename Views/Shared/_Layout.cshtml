@@ -1,50 +1,197 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Plantshop</title>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"] - PlantShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Plantshop.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Plantshop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+    <div class="container d-flex flex-column min-vh-100">
+        <header class="border-bottom-green">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand green logo" href="#">
+                        <img class="green" src="/img/logo.svg" alt="">
+                        РОСЛИННИЦЯ
+                    </a>
+                    <button class="navbar-toggler green" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" aria-current="page" href="./index.html">Головна</a>
+                            </li>
+                            <li class="nav-item ms-5">
+                                <a class="nav-link" href="./product_cart.html">Магазин</a>
+                            </li>
+                            <li class="nav-item mx-5">
+                                <a class="nav-link" href="./plant-care.html">Догляд</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./plant_blog.html">Блог</a>
+                            </li>
+                        </ul>
+                        <a href="#">
+                            <img src="img/search.svg" alt="">
+                        </a>
+                        <a href="#" class="mx-4">
+                            <img src="img/cart.svg" alt="">
+                            <span class="position-absolute translate-middle badge bg-green rounded-pill count-items">0</span>
+                        </a>
+                        <partial name="_LoginPartial" />
+                        <partial name="_RegisterPartial" />
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+            </nav>
+        </header>
+        <main role="main" class="flex-shrink-0 mb-5">
             @RenderBody()
         </main>
-    </div>
+        <footer class="footer mt-auto pt-5">
+            <div class="row">
+                <div class="col-6 col-md-2 ms-3">
+                    <div class="ball"></div>
+                    <img src="./img/plant.svg" height="90" alt="" class="mb-3 ms-3">
+                    <h5><strong>Догляд за садом</strong></h5>
+                    <p>Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>
+                </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Plantshop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+                <div class="col-6 col-md-2 ms-3">
+                    <div class="ball"></div>
+                    <img src="./img/cactus.svg" alt="" class="mb-3 ms-3">
+                    <h5><strong>Реконструкція квітів</strong></h5>
+                    <p>Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>
+                </div>
+
+                <div class="col-6 col-md-2 ms-3">
+                    <div class="ball"></div>
+                    <img src="./img/kettle.svg" alt="" class="mb-3 ms-2">
+                    <h5><strong>Полив саду</strong></h5>
+                    <p>Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>
+                </div>
+
+                <div class="col-md-4 offset-md-1 ">
+                    <form>
+                        <h4><strong>Бажаєте підписатися на розсилку?</strong></h4>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2 my-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-green" placeholder="E-mail отримувача"
+                                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-green px-4" type="button" id="button-addon2">Згода</button>
+                            </div>
+                        </div>
+                        <p>
+                            Зазвичай ми публікуємо пропозиції та виклики в інформаційній розсилці. Ми - ваш онлайн-портал про
+                            кімнатні рослини. Ми пропонуємо широкий асортимент кімнатних рослин та аксесуарів, які
+                            доставляються безпосередньо з нашого (зеленого) будинку до вашого!
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex green-light gap-1 ps-3 py-2">
+                <div class="col-6 col-md-2 my-4">
+                    <a class="navbar-brand green logo" href="#">
+                        <img class="green" src="/img/logo.svg" alt="">
+                        РОСЛИННИЦЯ
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-2 d-inline-flex">
+                    <img src="./img/address.svg" width="24" height="24" class="mt-4 me-1" alt="">
+                    <a href="#" class="nav-link p-0 text-body-secondary my-3">
+                        <small>
+                            70 West Buckingham Ave.
+                            Farmingdale, NY 11735
+                        </small>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-2 d-inline-flex ms-3">
+                    <img src="./img/mail.svg" width="24" height="24" class="mt-4 me-2" alt="">
+                    <a href="#" class="nav-link p-0 text-body-secondary my-4">contact@plantshop.com</a>
+                </div>
+
+                <div class="col-md-5 offset-md-1 d-inline-flex">
+                    <img src="./img/phone.svg" width="24" height="24" class="mt-4 me-2" alt="">
+                    <a href="#" class="nav-link p-0 text-body-secondary my-4">+88 01911 717 490</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2 mt-4 ms-3">
+                    <h5><strong>Мій кабінет</strong></h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Мій кабінет</a></li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Наші магазини</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Зв'язатися з нами</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Кар'єра</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Акції</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mt-4 ms-3">
+                    <h5><strong>Довідка</strong></h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Довідковий центр</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Як купити</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Відвантаження та доставка</a></li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Товарна політика</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Як повернути</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mt-4 ms-3">
+                    <h5><strong>Категорії</strong></h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Кімнатні рослини</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Горшкові рослини</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Насіння</a></li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-body-secondary">Маленькі рослини</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Аксесуари</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 offset-md-1 mt-4 text-center">
+                    <h5 class=""><strong>Соціальні мережі</strong></h5>
+                    <ul class="nav justify-content-center mb-3">
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-instagram green h4"></i></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-facebook green h4"></i></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-whatsapp green h4"></i></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-telegram green h4"></i></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-youtube green h4"></i></a></li>
+                    </ul>
+                    <h5 class=""><strong>Ми приймаємо</strong></h5>
+                    <img src="./img/payments.png" alt="">
+                </div>
+            </div>
+            <div class="m-auto py-3 border-top">
+                <p class="text-center bg-white">&copy; 2024 РОСЛИННИЦЯ. Всі права захищені.</p>
+            </div>
+        </footer>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/node_modules/toastr/toastr.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/auth.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

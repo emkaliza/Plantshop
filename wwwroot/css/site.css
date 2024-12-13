@@ -1,22 +1,422 @@
-html {
-  font-size: 14px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
-@media (min-width: 768px) {
-  html {
+* {
+    font-family: "Mulish", sans-serif;
     font-size: 16px;
-  }
+    font-weight: 400;
+    font-style: normal;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.logo {
+    font-weight: 900;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.green {
+    color: #46A358;
 }
 
-body {
-  margin-bottom: 60px;
+    .green:hover {
+        color: #44b955;
+    }
+
+.bg-green {
+    background: #46A358;
+}
+
+.btn-green {
+    background: #46A358;
+    color: white;
+    border-color: #46A358;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+    .btn-green:hover {
+        background: #44b955;
+        color: white;
+        padding: 6px 12px;
+        font-weight: 600;
+    }
+
+    .btn-green:focus {
+        background: #44b955;
+        color: white;
+        font-weight: 600;
+    }
+
+    .btn-green:active {
+        background: white;
+        color: #46A358;
+        border-color: #46A358;
+        padding: 6px 12px;
+        font-weight: 600;
+    }
+
+.btn-outline-green {
+    background: white;
+    color: #46A358;
+    border-color: #46A358;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+    .btn-outline-green:hover {
+        background: #46A358;
+        color: white;
+        padding: 6px 12px;
+        font-weight: 600;
+    }
+
+    .btn-outline-green:active {
+        background: white;
+        color: #46A358;
+        border-color: #46A358;
+        padding: 6px 12px;
+        font-weight: 600;
+    }
+
+    .btn-outline-green:focus {
+        background: white;
+        color: #44b955;
+        border-color: #46A358;
+        font-weight: 600;
+    }
+
+.border-green {
+    border-color: #46A358;
+}
+
+.border-bottom-green {
+    border-bottom: 1px solid rgba(70, 163, 88, 0.3);
+}
+
+.border-bottom-green-1 {
+    border-bottom: 10px solid rgba(70, 163, 88, 1);
+}
+
+.green-light {
+    background: rgba(70, 163, 88, 0.1);
+}
+
+.navbar {
+    border-bottom: #46A358;
+}
+
+.nav-item.active {
+    font-weight: 600;
+    border-bottom: 3px solid green;
+    margin-bottom: -14px;
+}
+
+.ball {
+    height: 74px;
+    width: 74px;
+    border-radius: 50%;
+    background: #46A358;
+    opacity: 0.1;
+    margin-bottom: -90px;
+}
+
+.range-slider {
+    position: relative;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.range-selected {
+    height: 100%;
+    position: absolute;
+    background: #46A358;
+    border-radius: 5px;
+}
+
+.range-input {
+    position: relative;
+}
+
+    .range-input input {
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        background: none;
+        pointer-events: none;
+        -webkit-appearance: none;
+    }
+
+        .range-input input::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 3px solid #46A358;
+            background: #46A358;
+            pointer-events: auto;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .range-input input::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 3px solid #46A358;
+            background: #46A358;
+            pointer-events: auto;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+
+.range-price {
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-link {
+    color: #46A358;
+}
+
+    .page-link:hover {
+        color: #44b955;
+    }
+
+.page-item.active .page-link {
+    background: #46A358;
+    color: white;
+    border-color: #46A358;
+}
+
+.nav-underline .nav-link {
+    color: black;
+}
+
+    .nav-underline .nav-link:hover {
+        color: #46A358;
+    }
+
+    .nav-underline .nav-link:active {
+        color: #46A358;
+    }
+
+    .nav-underline .nav-link.active {
+        color: #46A358;
+    }
+
+    .nav-underline .nav-link:focus {
+        color: #46A358;
+    }
+
+.card-body .nav-link:hover {
+    color: #46A358;
+}
+
+.list-group .nav-link:hover {
+    color: #46A358;
+}
+
+.list-group li:hover {
+    font-weight: bold;
+    color: #46A358;
+}
+
+.list-group li:focus {
+    font-weight: bold;
+    color: #46A358;
+}
+
+.list-group li:visited {
+    font-weight: bold;
+    color: #46A358;
+}
+
+.list-group .nav-link:focus {
+    color: #46A358;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #46A358;
+}
+
+.plant-size-green {
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    border: 1px solid green;
+    text-decoration: none;
+}
+
+.plant-size {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    text-decoration: none;
+}
+
+.carousel-green {
+    color: #46A358;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    color: #46A358;
+}
+
+    .carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover {
+        color: #46A358;
+    }
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    color: #46A358;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #46A358;
+    opacity: .2;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+.carousel-caption {
+    color: #46A358;
+}
+
+.carousel-indicators {
+    margin-bottom: -2rem;
+}
+
+input[type="radio"] {
+    accent-color: green; /* Change the color of the radio button */
+    border: 1px solid green;
+}
+
+    input[type="radio"]:hover {
+        border: 1px solid green;
+    }
+
+    input[type="radio"]:checked {
+        background-color: green;
+        border: 1px solid green; /* Change the color of the checked radio button */
+    }
+
+        div.border input[type="radio"]:focus, input[type="radio"]:checked + .border {
+            border: 1px solid green; /* green border when radio button is checked */
+        }
+
+.btn-close {
+    color: #46A358;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+    .btn-close:hover {
+        opacity: 0.8;
+    }
+
+.f-size {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+footer .nav-link {
+    font-size: 14px;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.care-card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+    .care-card:hover {
+        transform: translateY(-5px);
+    }
+
+.care-icon {
+    font-size: 2.5rem;
+    color: #4CAF50;
+}
+
+.product-actions {
+    position: absolute;
+    bottom: 100px;
+    left: 55px;
+    right: 55px;
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+    .product-actions button, .product-actions a {
+        background: white;
+        border: 1px solid #dee2e6;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+        .product-actions button:hover, .product-actions a:hover {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+.discount-badge {
+    position: absolute;
+    top: 20px;
+    /*left: 1px;*/
+    background: #46A358;
+    color: white;
+    padding: 4px 8px;
+    /*border-radius: 4px;*/
+    font-size: 0.875rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #b3b8b8;
+    font-size: 1rem;
+}
+
+.current-price {
+    color: #46A358;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+    .card:hover .product-actions {
+        opacity: 1;
+    }
+
+#price-range.card:hover {
+    transform: translateY(0);
 }

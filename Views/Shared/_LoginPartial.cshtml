@@ -1,26 +1,92 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<AppUser> SignInManager
+@inject PlantShop.ViewModels.LoginViewModel loginModel
 
-<ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+    <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout">
+        <button type="submit" class="btn btn-green px-4">
+            <span class="d-flex align-items-center gap-1">
+                <i class="bi bi-box-arrow-left me-2"></i> Вихід
+            </span>
+        </button>
+    </form>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+    <button class="btn btn-green px-4" data-bs-target="#loginModal" data-bs-toggle="modal">
+        <span class="d-flex align-items-center gap-1">
+            <i class="bi bi-box-arrow-in-right me-2"></i> Вхід
+        </span>
+    </button>
 }
-</ul>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" aria-hidden="true" aria-labelledby="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <div class="d-inline-flex mx-auto my-3 ps-5 align-items-baseline">
+                    <h5 class="modal-title fs-5 green me-3" id="loginModal">Вхід</h5>
+                    <span style="opacity: .5;">|</span>
+                    <button class="nav-link ms-3" data-bs-target="#registerModal" data-bs-toggle="modal">
+                        <h5>Реєстрація</h5>
+                    </button>
+                </div>
+                <button type="button" class="btn-close mb-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="col-sm-8 text-sm-center mx-auto">Введіть своє ім'я та пароль для входу.</p>
+                <form asp-controller="Account" asp-action="Login" method="post"
+                      data-ajax="true" data-ajax-method="POST"
+                      data-ajax-success="onLoginSuccess" data-ajax-failure="onLoginFailure">
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-3">
+                        <div class="col-sm-8 m-auto">
+                            <input type="email" class="form-control" name="Email" required
+                                   asp-for="@loginModel.Email" placeholder="Введіть email">
+                            <span asp-validation-for="@loginModel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 mx-auto">
+                            <input type="password" class="form-control" name="Password" required
+                                   asp-for="@loginModel.Password" placeholder="Введіть пароль">
+                            <span asp-validation-for="@loginModel.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 mx-auto form-check">
+                            <label asp-for="@loginModel.RememberMe" class="form-check-label">Запам'ятати мене</label>
+                            <input type="checkbox" class="form-check-input" asp-for="@loginModel.RememberMe">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 mx-auto">
+                            <a asp-controller="Account" asp-action="ForgotPassword" class="nav-link green text-end">
+                                Забули пароль?
+                            </a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-green col-8 offset-2 my-3">Увійти</button>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0 border-bottom-green-1">
+                <p class="col-sm-8 text-sm-center mx-auto mb-3">Або увійдіть за допомогою:</p>
+                <div class="col-sm-8 mx-auto">
+                    <form asp-controller="Account" asp-action="ExternalLogin" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" name="provider" value="Google" class="border w-100 mb-3 d-flex justify-content-sm-center align-items-center btn">
+                            <img src="~/img/google.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3">Google</p>
+                        </button>
+                        <button type="submit" name="provider" value="Facebook" class="border w-100 mb-5 d-flex justify-content-sm-center align-items-center btn">
+                            <img src="~/img/facebook.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3">Facebook</p>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

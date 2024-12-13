@@ -1,0 +1,80 @@
+﻿@inject PlantShop.ViewModels.RegisterViewModel registerModel
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" aria-hidden="true" aria-labelledby="registerModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <div class="d-inline-flex mx-auto my-3 ps-5 align-items-baseline">
+                    <h5 class="modal-title fs-5 green me-3" id="registerModal">Реєстрація</h5>
+                    <span style="opacity: .5;">|</span>
+                    <button class="nav-link ms-3" data-bs-target="#loginModal" data-bs-toggle="modal">
+                        <h5>Вхід</h5>
+                    </button>
+                </div>
+                <button type="button" class="btn-close mb-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="col-sm-8 text-sm-center mx-auto">Введіть свою електронну адресу та пароль, щоб зареєструватися.</p>
+                <form asp-controller="Account" asp-action="Register" method="post"
+                      data-ajax="true" data-ajax-method="POST"
+                      data-ajax-success="onRegisterSuccess" data-ajax-failure="onRegisterFailure">
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-3">
+                        <div class="col-sm-8 m-auto">
+                            <input type="text" class="form-control" name="Name" required
+                                   asp-for="@registerModel.Name" placeholder="Введіть ім'я">
+                            <span asp-validation-for="@registerModel.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 m-auto">
+                            <input type="email" class="form-control" name="Email" required
+                                   asp-for="@registerModel.Email" placeholder="Введіть email">
+                            <span asp-validation-for="@registerModel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 mx-auto">
+                            <input type="password" class="form-control" name="Password" required
+                                   asp-for="@registerModel.Password" placeholder="Введіть пароль">
+                            <span asp-validation-for="@registerModel.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 mx-auto">
+                            <input type="password" class="form-control" name="ConfirmPassword" required
+                                   asp-for="@registerModel.ConfirmPassword" placeholder="Підтвердити пароль">
+                            <span asp-validation-for="@registerModel.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-green col-8 offset-2 my-3">Зареєструватися</button>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0 border-bottom-green-1">
+                <p class="col-sm-8 text-sm-center mx-auto mb-3">Або зареєструйтеся за допомогою:</p>
+                <div class="col-sm-8 mx-auto">
+                    <form asp-controller="Account" asp-action="ExternalLogin" method="post">
+                        @Html.AntiForgeryToken()
+                        @* <button type="submit" name="provider" value="Google" class="border w-100 mb-3 d-flex justify-content-sm-center align-self-center btn">
+                            <img src="~/img/google.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3"><small>Увійдіть за допомогою Google</small></p>
+                        </button>
+                        <button type="submit" name="provider" value="Facebook" class="border w-100 mb-5 d-flex justify-content-sm-center align-self-center btn">
+                            <img src="~/img/facebook.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3"><small>Увійдіть за допомогою Facebook</small></p>
+                        </button> *@
+                        <button type="submit" name="provider" value="Google" class="border w-100 mb-3 d-flex justify-content-sm-center align-items-center btn">
+                            <img src="~/img/google.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3">Google</p>
+                        </button>
+                        <button type="submit" name="provider" value="Facebook" class="border w-100 mb-5 d-flex justify-content-sm-center align-items-center btn">
+                            <img src="~/img/facebook.svg" alt="" class="pe-3">
+                            <p class="pt-sm-3">Facebook</p>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
