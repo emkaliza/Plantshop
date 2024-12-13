@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Plantshop.Models;
+using PlantShop.Models;
 using System.Diagnostics;
 
 namespace Plantshop.Controllers

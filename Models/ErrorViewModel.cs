@@ -1,4 +1,4 @@
-namespace Plantshop.Models
+namespace PlantShop.Models
 {
     public class ErrorViewModel
     {
