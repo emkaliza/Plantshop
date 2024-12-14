@@ -1,0 +1,90 @@
+﻿@using PlantShop.Models
+@model PaginatedList<Discount>
+
+@{
+    ViewData["Title"] = "Знижки та Акції";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-baseline mt-5">
+    <h1>Знижки і Акції</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Створити</a>
+    </p>
+</div>
+
+@Html.AntiForgeryToken()
+
+<div class="table-responsive">
+    <table class="table table-sm table-striped table-hover">
+        <thead class="table-success">
+            <tr>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Name)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Code)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Description)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().DiscountPercentage)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().FixedDiscountAmount)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().StartDate)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().EndDate)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().IsActive)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().MinimumPurchaseAmount)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().MaxUsageCount)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().CurrentUsageCount)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().MaximumDiscountAmount)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().CreatedDate)</th>
+                <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().LastUsedDate)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider green">
+            @foreach (var item in Model.Items) 
+            {
+                <tr id="discount-@item.DiscountId">
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Code)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DiscountPercentage)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FixedDiscountAmount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MinimumPurchaseAmount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MaxUsageCount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CurrentUsageCount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MaximumDiscountAmount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastUsedDate)</td>
+                    <td>
+                        <div class="d-inline-flex">
+                            <a asp-action="Edit" asp-route-id="@item.DiscountId" class="btn btn-sm btn-primary me-2">Редагувати</a>
+                            <a asp-action="Details" asp-route-id="@item.DiscountId" class="btn btn-sm btn-secondary me-2">Деталі</a>
+                            <button onclick="deleteDiscount(@item.DiscountId)" class="btn btn-sm btn-danger">Видалити</button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<partial name="_PaginationPartial" />
+
+@section Scripts {
+    <script>
+        function deleteDiscount(id) {
+            if (confirm('Ви впевнені що хочете видалити?')) {
+                $.ajax({
+                    url: '/Admin/Discounts/Delete/' + id,
+                    type: 'POST',
+                    data: {
+                        "__RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function () {
+                        // Видаляємо рядок з таблиці
+                        $('#discount-' + id).remove();
+                    }
+                });
+            }
+        }
+    </script>
+}

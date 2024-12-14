@@ -1,0 +1,90 @@
+﻿@using PlantShop.Models
+@model PaginatedList<Plant>
+
+@{
+    ViewData["Title"] = "Квіти";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-baseline mt-5">
+    <h1>Кімнатні квіти та аксесуари</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Створити</a>
+    </p>
+</div>
+
+@Html.AntiForgeryToken()
+
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().ImageUrl)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Name)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Description)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().BasePrice)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().StockQuantity)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().IsAvailable)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().DiscountPrice)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().IsOnSale)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Discount)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Category)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().CreatedDate)</th>
+                    <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().LastModifiedDate)</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <tbody class="table-group-divider green">
+                @foreach (var item in Model.Items)
+                {
+                    <tr id="plant-@item.PlantId">
+                        <td>@if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="~/@item.ImageUrl" style="max-width: 60px; max-height: 60px;" class="mb-2" />
+                            }
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@(item.Description?.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BasePrice)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.StockQuantity)</td>
+                        <td>@(item.IsAvailable ? "доступно" : "не доступно")</td>
+                        <td>@Html.DisplayFor(modelItem => item.DiscountPrice)</td>
+                        <td>@(item.IsOnSale ? "є" : "-")</td>
+                        <td>@Html.DisplayFor(modelItem => item.Discount.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastModifiedDate)</td>
+                        <td>
+                            <div class="d-inline-flex">
+                                <a asp-action="Edit" asp-route-id="@item.PlantId" class="btn btn-sm btn-primary me-2">Редагувати</a>
+                                <a asp-action="Details" asp-route-id="@item.PlantId" class="btn btn-sm btn-secondary me-2">Деталі</a>
+                                <button onclick="deletePlant(@item.PlantId)" class="btn btn-sm btn-danger">Видалити</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+<partial name="_PaginationPartial" />
+
+@section Scripts {
+    <script>
+        function deletePlant(id) {
+            if (confirm('Ви впевнені що хочете видалити?')) {
+                $.ajax({
+                    url: '/Admin/Plants/Delete/' + id,
+                    type: 'POST',
+                    data: {
+                        "__RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function () {
+                        // Видаляємо рядок з таблиці
+                        $('#plant-' + id).remove();
+                    }
+                });
+            }
+        }
+    </script>
+}
