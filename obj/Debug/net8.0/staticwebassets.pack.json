@@ -13,20 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\123.svg",
-      "PackagePath": "staticwebassets\\img\\123.svg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\01.jpeg",
+      "PackagePath": "staticwebassets\\img\\01.jpeg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_41.png",
-      "PackagePath": "staticwebassets\\img\\Group_41.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\02.jpeg",
+      "PackagePath": "staticwebassets\\img\\02.jpeg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_44.png",
-      "PackagePath": "staticwebassets\\img\\Group_44.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\03.jpeg",
+      "PackagePath": "staticwebassets\\img\\03.jpeg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\Group_45.png",
-      "PackagePath": "staticwebassets\\img\\Group_45.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\04.jpeg",
+      "PackagePath": "staticwebassets\\img\\04.jpeg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\address.svg",
@@ -39,30 +39,6 @@
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\cart.svg",
       "PackagePath": "staticwebassets\\img\\cart.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\coats-2018.jpg",
-      "PackagePath": "staticwebassets\\img\\coats-2018.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\facebook.svg",
-      "PackagePath": "staticwebassets\\img\\facebook.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\footer.svg",
-      "PackagePath": "staticwebassets\\img\\footer.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\google.svg",
-      "PackagePath": "staticwebassets\\img\\google.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\image_17.svg",
-      "PackagePath": "staticwebassets\\img\\image_17.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\in.svg",
-      "PackagePath": "staticwebassets\\img\\in.svg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\kettle.svg",
@@ -85,56 +61,104 @@
       "PackagePath": "staticwebassets\\img\\phone.svg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant-old.svg",
-      "PackagePath": "staticwebassets\\img\\plant-old.svg"
-    },
-    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant.svg",
       "PackagePath": "staticwebassets\\img\\plant.svg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant1.png",
-      "PackagePath": "staticwebassets\\img\\plant1.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\0ac86b82-3971-4d90-957f-f49aaac8f408.png",
+      "PackagePath": "staticwebassets\\img\\plants\\0ac86b82-3971-4d90-957f-f49aaac8f408.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plant1.svg",
-      "PackagePath": "staticwebassets\\img\\plant1.svg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\0d6ca8bc-b9d6-4f72-b2d8-924606d8ac98.png",
+      "PackagePath": "staticwebassets\\img\\plants\\0d6ca8bc-b9d6-4f72-b2d8-924606d8ac98.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\01.jpeg",
-      "PackagePath": "staticwebassets\\img\\plants\\01.jpeg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\0ff03945-ee39-4e05-aa27-f0d3fc5917d0.png",
+      "PackagePath": "staticwebassets\\img\\plants\\0ff03945-ee39-4e05-aa27-f0d3fc5917d0.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\02.jpeg",
-      "PackagePath": "staticwebassets\\img\\plants\\02.jpeg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\0fffc797-7cad-44c9-9eeb-f499fb219d6e.png",
+      "PackagePath": "staticwebassets\\img\\plants\\0fffc797-7cad-44c9-9eeb-f499fb219d6e.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\03.jpeg",
-      "PackagePath": "staticwebassets\\img\\plants\\03.jpeg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\36dcf792-ad33-4dcc-b734-7a553111723d.png",
+      "PackagePath": "staticwebassets\\img\\plants\\36dcf792-ad33-4dcc-b734-7a553111723d.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\04.jpeg",
-      "PackagePath": "staticwebassets\\img\\plants\\04.jpeg"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\81a932e2-13bb-43d5-9031-e038acc6b453.png",
+      "PackagePath": "staticwebassets\\img\\plants\\81a932e2-13bb-43d5-9031-e038acc6b453.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_10.png",
-      "PackagePath": "staticwebassets\\img\\plants\\image_10.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\bdd6503f-9d5a-41a7-9555-67462a22f6d9.png",
+      "PackagePath": "staticwebassets\\img\\plants\\bdd6503f-9d5a-41a7-9555-67462a22f6d9.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_20.png",
-      "PackagePath": "staticwebassets\\img\\plants\\image_20.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\c141dc0e-adff-464c-9a09-f053c59ec94d.png",
+      "PackagePath": "staticwebassets\\img\\plants\\c141dc0e-adff-464c-9a09-f053c59ec94d.png"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_7.png",
-      "PackagePath": "staticwebassets\\img\\plants\\image_7.png"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\image_8.png",
-      "PackagePath": "staticwebassets\\img\\plants\\image_8.png"
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\plants\\cc0181f9-ac57-448e-8881-f73f29f1eb72.png",
+      "PackagePath": "staticwebassets\\img\\plants\\cc0181f9-ac57-448e-8881-f73f29f1eb72.png"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\search.svg",
       "PackagePath": "staticwebassets\\img\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\123.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\123.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\Group_41.png",
+      "PackagePath": "staticwebassets\\img\\site-images\\Group_41.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\Group_44.png",
+      "PackagePath": "staticwebassets\\img\\site-images\\Group_44.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\Group_45.png",
+      "PackagePath": "staticwebassets\\img\\site-images\\Group_45.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\coats-2018.jpg",
+      "PackagePath": "staticwebassets\\img\\site-images\\coats-2018.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\facebook.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\facebook.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\footer.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\footer.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\google.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\google.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\image_17.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\image_17.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\in.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\in.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\plant-old.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\plant-old.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\plant1.png",
+      "PackagePath": "staticwebassets\\img\\site-images\\plant1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\plant1.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\plant1.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\thank-you.svg",
+      "PackagePath": "staticwebassets\\img\\site-images\\thank-you.svg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_1.jpg",
@@ -147,10 +171,6 @@
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_3.jpg",
       "PackagePath": "staticwebassets\\img\\slider_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\thank-you.svg",
-      "PackagePath": "staticwebassets\\img\\thank-you.svg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\auth.js",

@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Plantshop.ViewModels
+@model HomeIndexViewModel
+
+@{
     ViewData["Title"] = "Головна";
 }
 
@@ -27,15 +30,10 @@
     <div class="col-4 p-4 pe-5">
         <h5><strong>Категорії</strong></h5>
         <ul class="list-group">
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Кімнатні рослини</a><span>(23)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Горшкові рослини</a><span>(10)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Насіння</a><span>(12)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Маленькі рослини</a><span>(5)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Великі рослини</a><span>(11)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Сукуленти</a><span>(17)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Тераріуми</a><span>(19)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Садівництво</a><span>(8)</span></li>
-            <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">Аксесуари</a><span>(3)</span></li>
+            @foreach(var category in Model.Categories)
+            {
+                <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">@category.Name</a><span>(@category.Plants?.Count())</span></li>
+            }
         </ul>
 
         <!-- Price Range -->
@@ -44,10 +42,10 @@
             <div class="card-body">
                 <!-- Range Slider -->
                 <div class="range-slider">
-                    <div class="range-selected"></div>
+                    <div class="range-selected" style="left: 0; right: 0;"></div>
                     <div class="range-input">
                         <input type="range" class="min" min="0" max="2000" value="0" step="1">
-                        <input type="range" class="max" min="0" max="2000" value="1230" step="1">
+                        <input type="range" class="max" min="0" max="2000" value="2000" step="1">
                     </div>
                 </div>
 
@@ -57,7 +55,7 @@
                         <span class="input-group-text">&#8372;</span>
                         <input type="number" class="form-control min-price" value="0">
                         <span class="input-group-text">-</span>
-                        <input type="number" class="form-control max-price" value="1230">
+                        <input type="number" class="form-control max-price" value="2000">
                     </div>
                 </div>
 
@@ -65,16 +63,8 @@
                 <button class="btn btn-green px-4">Фільтри</button>
             </div>
         </div>
-        <div class="mt-4">
-            <h5><strong>Розмір</strong></h5>
-            <ul class="list-group">
-                <li class="list-group-item border-0"><a href="#" class="nav-link">Маленькі рослини</a></li>
-                <li class="list-group-item border-0"><a href="#" class="nav-link">Середні рослини</a></li>
-                <li class="list-group-item border-0"><a href="#" class="nav-link">Великі рослини</a></li>
-            </ul>
-        </div>
     </div>
-    <div class="row col-8">
+    <div class="container col-8">
         <div class="d-flex justify-content-between align-items-center">
             <ul class="nav nav-underline text-secondary">
                 <li class="nav-item">
@@ -97,126 +87,51 @@
             </div>
         </div>
         <div class="row g-4 row-cols-1 row-cols-md-3 mt-2">
-            <div class="col">
-                <div class="card h-100">
-                    <div class="discount-badge">13% OFF</div>
-                    <img src="./img/plants/image_7.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <span class="current-price me-2"><strong>&#8372; 199.00</strong></span>
-                        <span class="old-price"><strong>&#8372; 299.00</strong></span>
-                        <div class="product-actions">
-                            <button type="button" class="btn p-0 green">
-                                <i class="bi bi-cart"></i>
-                            </button>
-                            <button type="button" class="btn p-0 green">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <a href="./product_view.html" class="btn p-0 green">
-                                <i class="bi bi-search"></i>
-                            </a>
+            @foreach(var plant in Model.Plants.Items)
+            {
+                <div class="col">
+                    <div class="card h-100">
+                        @if (plant.IsOnSale)
+                            {
+                                <div class="discount-badge">- @plant.Discount.DiscountPercentage %</div>
+                            }
+                        <img src="@plant.ImageUrl" height="250" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>@plant.Name</strong></h5>
+                            @if (plant.IsOnSale)
+                            {
+                                <span class="current-price me-2"><strong>&#8372; @plant.DiscountPrice</strong></span>
+                                <span class="old-price"><strong>&#8372; @plant.BasePrice</strong></span>
+                            }
+                            else
+                            {
+                                <span class="current-price"><strong>&#8372; @plant.BasePrice</strong></span>
+                            }
+                            <div class="product-actions">
+                                <button type="button" class="btn p-0 green">
+                                    <i class="bi bi-cart"></i>
+                                </button>
+                                <button type="button" class="btn p-0 green">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                                <a href="./product_view.html" class="btn p-0 green">
+                                    <i class="bi bi-search"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_8.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_10.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="card-text green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_7.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_8.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_10.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="card-text green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_7.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_8.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="./img/plants/image_10.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Card title</strong></h5>
-                        <p class="card-text green"><strong>&#8372; 999</strong></p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-end mt-5 me-5">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <partial name="_PaginationPartial" model="Model.Plants" />
 </div>
 <h2 class="text-center">Наші публікації в блозі</h2>
 <p class="text-center">Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>
 <div class="row">
     <div class="col">
         <div class="card h-100" style="width: 18rem;">
-            <img src="./img/plants/01.jpeg" class="card-img-top" alt="...">
+            <img src="~/img/01.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text"><small class="green"><b>12 вересня | Читати за 6 хвилин</b></small></p>
                 <h5 class="card-title h5">Кактуси та сукуленти Поради по догляду</h5>
@@ -227,7 +142,7 @@
     </div>
     <div class="col">
         <div class="card h-100" style="width: 18rem;">
-            <img src="./img/plants/02.jpeg" class="card-img-top" alt="...">
+            <img src="~/img/02.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text"><small class="green"><b>13 вересня | Читати за 2 хвилин</b></small></p>
                 <h5 class="card-title">10 кращих сукулентів для вашої оселі</h5>
@@ -238,7 +153,7 @@
     </div>
     <div class="col">
         <div class="card h-100" style="width: 18rem;">
-            <img src="./img/plants/03.jpeg" class="card-img-top" alt="...">
+            <img src="~/img/03.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text"><small class="green"><b>15 вересня | Читати за 3 хвилин</b></small></p>
                 <h5 class="card-title">Кактуси та сукуленти Поради по догляду</h5>
@@ -249,7 +164,7 @@
     </div>
     <div class="col">
         <div class="card h-100" style="width: 18rem;">
-            <img src="./img/plants/04.jpeg" class="card-img-top" alt="...">
+            <img src="~/img/04.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text"><small class="green"><b>15 вересня | Читати за 3 хвилин</b></small></p>
                 <h5 class="card-title">Кращі кімнатні рослини Кімната за кімнатою</h5>
