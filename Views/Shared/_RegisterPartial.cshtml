@@ -56,14 +56,6 @@
                 <div class="col-sm-8 mx-auto">
                     <form asp-controller="Account" asp-action="ExternalLogin" method="post">
                         @Html.AntiForgeryToken()
-                        @* <button type="submit" name="provider" value="Google" class="border w-100 mb-3 d-flex justify-content-sm-center align-self-center btn">
-                            <img src="~/img/google.svg" alt="" class="pe-3">
-                            <p class="pt-sm-3"><small>Увійдіть за допомогою Google</small></p>
-                        </button>
-                        <button type="submit" name="provider" value="Facebook" class="border w-100 mb-5 d-flex justify-content-sm-center align-self-center btn">
-                            <img src="~/img/facebook.svg" alt="" class="pe-3">
-                            <p class="pt-sm-3"><small>Увійдіть за допомогою Facebook</small></p>
-                        </button> *@
                         <button type="submit" name="provider" value="Google" class="border w-100 mb-3 d-flex justify-content-sm-center align-items-center btn">
                             <img src="~/img/google.svg" alt="" class="pe-3">
                             <p class="pt-sm-3">Google</p>

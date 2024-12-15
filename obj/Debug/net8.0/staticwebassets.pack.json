@@ -41,6 +41,14 @@
       "PackagePath": "staticwebassets\\img\\cart.svg"
     },
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\facebook.svg",
+      "PackagePath": "staticwebassets\\img\\facebook.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\google.svg",
+      "PackagePath": "staticwebassets\\img\\google.svg"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\kettle.svg",
       "PackagePath": "staticwebassets\\img\\kettle.svg"
     },
@@ -125,16 +133,8 @@
       "PackagePath": "staticwebassets\\img\\site-images\\coats-2018.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\facebook.svg",
-      "PackagePath": "staticwebassets\\img\\site-images\\facebook.svg"
-    },
-    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\footer.svg",
       "PackagePath": "staticwebassets\\img\\site-images\\footer.svg"
-    },
-    {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\google.svg",
-      "PackagePath": "staticwebassets\\img\\site-images\\google.svg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\image_17.svg",

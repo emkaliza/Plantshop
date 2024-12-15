@@ -3,6 +3,22 @@
 
 @{
     ViewData["Title"] = "Головна";
+
+    string GetPageUrl(int pageNumber)
+    {
+        var urlParams = new Dictionary<string, string>
+        {
+            { "pageNumber", pageNumber.ToString() },
+            { "sortOrder", Model.CurrentSortOrder ?? "" },
+            { "categoryId", Model.CurrentCategoryId?.ToString() ?? "" },
+            { "minPrice", Model.CurrentMinPrice.ToString() },
+            { "maxPrice", Model.CurrentMaxPrice.ToString() },
+            { "isNew", Model.IsNew.ToString() },
+            { "isOnSale", Model.IsOnSale.ToString() }
+        };
+
+        return Url.Action("Index", urlParams);
+    }
 }
 
 <div id="carouselAutoplaying" class="carousel slide mt-3" data-bs-ride="carousel">
@@ -32,35 +48,39 @@
         <ul class="list-group">
             @foreach(var category in Model.Categories)
             {
-                <li class="list-group-item border-0 d-inline-flex justify-content-between"><a href="#" class="nav-link">@category.Name</a><span>(@category.Plants?.Count())</span></li>
+                <li class="list-group-item border-0 d-inline-flex justify-content-between">
+                    <a href="@Url.Action("Index", new { categoryId = category.CategoryId, minPrice = Model.CurrentMinPrice, maxPrice = Model.CurrentMaxPrice, sortOrder = Model.CurrentSortOrder })"
+                       class="nav-link @(Model.CurrentCategoryId == category.CategoryId ? "active" : "")">
+                        @category.Name
+                    </a>
+                    <span>(@category.Count)</span>
+                </li>
             }
         </ul>
-
-        <!-- Price Range -->
         <div class="card border-0">
             <h5 class="card-title mt-4"><strong>Діапазон цін</strong></h5>
             <div class="card-body">
-                <!-- Range Slider -->
                 <div class="range-slider">
-                    <div class="range-selected" style="left: 0; right: 0;"></div>
+                    <div class="range-selected" style="left: @((int)Model.CurrentMinPrice/20)%; right: @((int)(100 - (int)Model.CurrentMaxPrice/20))%;"></div>
                     <div class="range-input">
-                        <input type="range" class="min" min="0" max="2000" value="0" step="1">
-                        <input type="range" class="max" min="0" max="2000" value="2000" step="1">
+                        <input type="range" class="min" min="0" max="2000" value="@Model.CurrentMinPrice" step="10">
+                        <input type="range" class="max" min="0" max="2000" value="@Model.CurrentMaxPrice" step="10">
                     </div>
                 </div>
+            <form asp-action="Index" method="get" id="filterForm">
+                <input type="hidden" name="categoryId" value="@Model.CurrentCategoryId" />
+                <input type="hidden" name="sortOrder" value="@Model.CurrentSortOrder" />
 
-                <!-- Price Inputs -->
                 <div class="range-price">
                     <div class="input-group">
                         <span class="input-group-text">&#8372;</span>
-                        <input type="number" class="form-control min-price" value="0">
+                        <input type="number" name="minPrice" class="form-control min-price" value="@Model.CurrentMinPrice">
                         <span class="input-group-text">-</span>
-                        <input type="number" class="form-control max-price" value="2000">
+                        <input type="number" name="maxPrice" class="form-control max-price" value="@Model.CurrentMaxPrice">
                     </div>
                 </div>
-
-                <!-- Filter Button -->
-                <button class="btn btn-green px-4">Фільтри</button>
+                    <button type="submit" class="btn btn-green px-4">Фільтри</button>
+                </form>
             </div>
         </div>
     </div>
@@ -68,21 +88,33 @@
         <div class="d-flex justify-content-between align-items-center">
             <ul class="nav nav-underline text-secondary">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Всі рослини</a>
+                    <a class="nav-link @(!Model.IsNew && !Model.IsOnSale ? "active" : "")"
+                       href="@Url.Action("Index", new { categoryId = Model.CurrentCategoryId, minPrice = Model.CurrentMinPrice, maxPrice = Model.CurrentMaxPrice, sortOrder = Model.CurrentSortOrder })">
+                        Всі рослини
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Нові надходження</a>
+                    <a class="nav-link @(Model.IsNew ? "active" : "")"
+                       href="@Url.Action("Index", new { categoryId = Model.CurrentCategoryId, minPrice = Model.CurrentMinPrice, maxPrice = Model.CurrentMaxPrice, sortOrder = Model.CurrentSortOrder, isNew = true })">
+                        Нові надходження
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Розпродаж</a>
+                    <a class="nav-link @(Model.IsOnSale ? "active" : "")"
+                       href="@Url.Action("Index", new { categoryId = Model.CurrentCategoryId, minPrice = Model.CurrentMinPrice, maxPrice = Model.CurrentMaxPrice, sortOrder = Model.CurrentSortOrder, isOnSale = true })">
+                        Розпродаж
+                    </a>
                 </li>
             </ul>
             <div>
                 Сортування:
-                <select class="nav-item border-0 me-3" aria-label="Default select">
-                    <option class="nav-link" selected>за замовчуванням</option>
-                    <option class="nav-link" value="1">по зростанню</option>
-                    <option class="nav-link" value="2">по спаданню</option>
+                <select class="nav-item border-0 me-3"
+                        onchange="window.location.href='@Url.Action("Index")?categoryId=@Model.CurrentCategoryId&minPrice=@Model.CurrentMinPrice&maxPrice=@Model.CurrentMaxPrice&isNew=@Model.IsNew&isOnSale=@Model.IsOnSale&pageNumber=@Model.Plants.PageIndex&sortOrder=' + this.value">
+                    <option selected="@(Model.CurrentSortOrder == "date_desc")" value="date_desc">за замовчуванням (найновіші)</option>
+                    <option selected="@(Model.CurrentSortOrder == "price_asc")" value="price_asc">по зростанню ціни</option>
+                    <option selected="@(Model.CurrentSortOrder == "price_desc")" value="price_desc">по спаданню ціни</option>
+                    <option selected="@(Model.CurrentSortOrder == "name_asc")" value="name_asc">по назві (А-Я)</option>
+                    <option selected="@(Model.CurrentSortOrder == "name_desc")" value="name_desc">по назві (Я-А)</option>
                 </select>
             </div>
         </div>
@@ -124,7 +156,39 @@
             }
         </div>
     </div>
-    <partial name="_PaginationPartial" model="Model.Plants" />
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-end mt-5">
+            @if (Model.Plants.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                       href="@GetPageUrl(Model.Plants.PageIndex - 1)">
+                        Попередня
+                    </a>
+                </li>
+            }
+
+            @for (var i = 1; i <= Model.Plants.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.Plants.PageIndex ? "active" : "")">
+                    <a class="page-link"
+                       href="@GetPageUrl(i)">
+                        @i
+                    </a>
+                </li>
+            }
+
+            @if (Model.Plants.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                       href="@GetPageUrl(Model.Plants.PageIndex + 1)">
+                        Наступна
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
 </div>
 <h2 class="text-center">Наші публікації в блозі</h2>
 <p class="text-center">Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>

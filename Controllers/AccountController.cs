@@ -79,7 +79,7 @@ namespace PlantShop.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.Name,
-                    EmailConfirmed = true // Временно, пока не настроена отправка email
+                    EmailConfirmed = true // Тимчасово, доки не буде налаштовано електронну пошту
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -88,7 +88,7 @@ namespace PlantShop.Controllers
                 {
                     _logger.LogInformation($"Створено нового користувача {user.Email}.");
                     await _userManager.AddToRoleAsync(user, "Customer");
-                    // Автоматический вход после регистрации
+                    // Автоматичний вхід після реєстрації
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
                 }
@@ -144,7 +144,7 @@ namespace PlantShop.Controllers
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
             var name = info.Principal.FindFirstValue(ClaimTypes.Name);
 
-            // Если пользователя нет, создаем нового
+            // Якщо користувача немає, створюємо нового
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
             {
@@ -168,7 +168,7 @@ namespace PlantShop.Controllers
                 }
             }
 
-            // Добавляем внешний логин к пользователю
+            // Додаємо зовнішній логін до користувача
             var addLoginResult = await _userManager.AddLoginAsync(user, info);
             if (addLoginResult.Succeeded)
             {
@@ -189,7 +189,7 @@ namespace PlantShop.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
-                    // Не раскрываем информацию о существовании пользователя
+                    // Не розкриваємо інформацію про існування користувача
                     return Json(new { success = true });
                 }
 
@@ -197,7 +197,7 @@ namespace PlantShop.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account",
                     new { userId = user.Id, code = code }, Request.Scheme);
 
-                // TODO: Добавить отправку email с ссылкой для сброса пароля
+                // TODO: Додати надсилання email із посиланням для скидання пароля
                 _logger.LogInformation($"Створено запит на скидання пароля для користувача {user.Email}.");
 
                 return Json(new { success = true });
