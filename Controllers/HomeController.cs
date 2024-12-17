@@ -4,6 +4,8 @@ using Plantshop.Data;
 using Plantshop.ViewModels;
 using PlantShop.Models;
 using System.Diagnostics;
+using System.Numerics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Plantshop.Controllers
 {
@@ -19,6 +21,7 @@ namespace Plantshop.Controllers
         }
 
         public async Task<IActionResult> Index(
+            string searchTerm,
             int? categoryId,
             decimal? minPrice,
             decimal? maxPrice,
@@ -32,6 +35,35 @@ namespace Plantshop.Controllers
                         .Include(p => p.Discount)
                         .AsQueryable();
 
+            query = FilterQuery(query, null, categoryId, minPrice, maxPrice, sortOrder, isNew, isOnSale);
+
+            int pageSize = 6;
+
+            return View(await GetHomeIndexViewModel(query, categoryId, minPrice, maxPrice,
+                sortOrder, isNew, isOnSale, null, pageNumber));
+        }
+
+        private IQueryable<Plant> FilterQuery(
+            IQueryable<Plant> query,
+            string? searchTerm,
+            int? categoryId,
+            decimal? minPrice,
+            decimal? maxPrice,
+            string? sortOrder,
+            bool? isNew,
+            bool? isOnSale
+            )
+        {
+            // Пошук
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(p =>
+                    p.Name.Contains(searchTerm) ||
+                    p.Description.Contains(searchTerm) ||
+                    p.Category.Name.Contains(searchTerm))
+                    .AsQueryable();
+            }
+
             // Фільтрація за категорією
             if (categoryId.HasValue)
             {
@@ -39,7 +71,7 @@ namespace Plantshop.Controllers
             }
 
             // Фільтрація за ціною
-            if(minPrice.HasValue)
+            if (minPrice.HasValue)
             {
                 query = query.Where(p => p.BasePrice >= minPrice.Value);
             }
@@ -73,11 +105,25 @@ namespace Plantshop.Controllers
                 _ => query.OrderByDescending(p => p.CreatedDate)
             };
 
+            return query;
+        }
+
+        private async Task<HomeIndexViewModel> GetHomeIndexViewModel(
+            IQueryable<Plant> query,
+            int? categoryId,
+            decimal? minPrice,
+            decimal? maxPrice,
+            string? sortOrder,
+            bool? isNew,
+            bool? isOnSale,
+            string? searchTerm,
+            int? pageNumber)
+        {
             int pageSize = 6;
 
-            var viewModel = new HomeIndexViewModel
+            return new HomeIndexViewModel
             {
-                Plants = await PaginatedList<Plant>.CreateAsync(query,pageNumber ?? 1,pageSize),
+                Plants = await PaginatedList<Plant>.CreateAsync(query, pageNumber ?? 1, pageSize),
                 Categories = await _context.Categories
                     .Select(c => new CategoryViewModel
                     {
@@ -85,18 +131,40 @@ namespace Plantshop.Controllers
                         Name = c.Name,
                         Count = c.Plants.Count
                     })
-                   .ToListAsync(),
+                    .ToListAsync(),
                 CurrentCategoryId = categoryId,
                 CurrentMinPrice = minPrice ?? 0,
                 CurrentMaxPrice = maxPrice ?? 2000,
                 CurrentSortOrder = sortOrder,
                 IsNew = isNew ?? false,
-                IsOnSale = isOnSale ?? false
+                IsOnSale = isOnSale ?? false,
+                SearchTerm = searchTerm
             };
-
-            return View(viewModel);
         }
 
+        public async Task<IActionResult> Search(
+            string searchTerm,
+            int? categoryId,
+            decimal? minPrice,
+            decimal? maxPrice,
+            string? sortOrder,
+            bool? isNew,
+            bool? isOnSale,
+            int? pageNumber)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return RedirectToAction("Index");
+
+            var query = _context.Plants
+                .Include(p => p.Category)
+                .Include(p => p.Discount)
+                .AsQueryable();
+
+            query = FilterQuery(query, searchTerm, categoryId, minPrice, maxPrice, sortOrder, isNew, isOnSale);
+
+            return View("Index", await GetHomeIndexViewModel(query, categoryId, minPrice, maxPrice,
+        sortOrder, isNew, isOnSale, searchTerm, pageNumber));
+        }
         public IActionResult Privacy()
         {
             return View();

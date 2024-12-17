@@ -35,9 +35,16 @@
                                 <a class="nav-link" href="./plant_blog.html">Блог</a>
                             </li>
                         </ul>
-                        <a href="#">
-                            <img src="~/img/search.svg" alt="">
-                        </a>
+                        <div class="search-container">
+                            <img src="~/img/search.svg" alt="search" onclick="toggleSearch()">
+                            <form asp-controller="Home" asp-action="Search" method="get" class="search-form green-light" id="searchForm">
+                                <input class="form-control search-input"
+                                       type="search"
+                                       placeholder="Пошук рослин..."
+                                       name="searchTerm"
+                                       id="searchInput">
+                            </form>
+                        </div>
                         <a href="#" class="mx-4">
                             <img src="~/img/cart.svg" alt="">
                             <span class="position-absolute translate-middle badge bg-green rounded-pill count-items">0</span>

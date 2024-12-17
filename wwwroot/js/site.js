@@ -41,3 +41,27 @@
         });
     });
 }
+
+function toggleSearch() {
+    const searchForm = document.querySelector('.search-form');
+    searchForm.classList.toggle('active');
+
+    if (searchForm.classList.contains('active')) {
+        document.getElementById('searchInput').focus();
+    }
+}
+
+document.getElementById('searchInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        document.getElementById('searchForm').submit();
+    }
+});
+
+document.addEventListener('click', function (e) {
+    const searchContainer = document.querySelector('.search-container');
+    const searchForm = document.querySelector('.search-form');
+
+    if (!searchContainer.contains(e.target) && searchForm.classList.contains('active')) {
+        searchForm.classList.remove('active');
+    }
+});

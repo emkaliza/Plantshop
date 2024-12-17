@@ -295,7 +295,7 @@
 }
 
 input[type="radio"] {
-    accent-color: green; /* Change the color of the radio button */
+    accent-color: green;
     border: 1px solid green;
 }
 
@@ -305,11 +305,11 @@ input[type="radio"] {
 
     input[type="radio"]:checked {
         background-color: green;
-        border: 1px solid green; /* Change the color of the checked radio button */
+        border: 1px solid green;
     }
 
         div.border input[type="radio"]:focus, input[type="radio"]:checked + .border {
-            border: 1px solid green; /* green border when radio button is checked */
+            border: 1px solid green;
         }
 
 .btn-close {
@@ -419,4 +419,21 @@ footer .nav-link {
 
 #price-range.card:hover {
     transform: translateY(0);
+}
+
+.search-container > img:hover {
+    cursor: pointer;
+}
+
+.search-form {
+    display: none;
+    position: absolute;
+    top: 5%;
+    right: 18%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.search-form.active {
+    display: block;
 }
