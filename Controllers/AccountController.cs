@@ -42,7 +42,7 @@ namespace PlantShop.Controllers
                     _logger.LogInformation($"Користувач {user.Email} успішно увійшов в систему.");
                     if (user.Role == "Admin")
                         return Json(new { success = true, redirectUrl = Url.Action("Index", "Admin", new { area = "Admin" }) });
-                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Customer", new { area = "Customer"}) });
                 }
 
                 if (result.IsLockedOut)

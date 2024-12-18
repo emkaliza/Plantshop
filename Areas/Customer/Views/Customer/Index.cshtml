@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Деталі користувача";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h1>Головна</h1>
+
+@* @using PlantShop.Models
+@model AppUser
+@{
+    ViewData["Title"] = "Деталі користувача";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2 class="text-center my-5">@ViewData["Title"]</h2>
+
+<div class="container col-md-8 mx-auto">
+    <dl class="row">
+        <dt class="col-sm-4">Ім'я</dt>
+        <dd class="col-sm-8">@Model.FirstName</dd>
+
+        <dt class="col-sm-4">Прізвище</dt>
+        <dd class="col-sm-8">@Model.LastName</dd>
+
+        <dt class="col-sm-4">Email</dt>
+        <dd class="col-sm-8">@Model.Email</dd>
+
+        <dt class="col-sm-4">Адреса</dt>
+        <dd class="col-sm-8">@Model.Address</dd>
+
+        <dt class="col-sm-4">Роль</dt>
+        <dd class="col-sm-8">@Model.Role</dd>
+
+        <dt class="col-sm-4">Дата реєстрації</dt>
+        <dd class="col-sm-8">@Model.RegistrationDate.ToString("dd.MM.yyyy HH:mm")</dd>
+
+        <dt class="col-sm-4">Останній вхід</dt>
+        <dd class="col-sm-8">
+            @(Model.LastLoginDate.HasValue ? Model.LastLoginDate.Value.ToString("dd.MM.yyyy HH:mm") : "Не входив")
+        </dd>
+    </dl> *@
+@* 
+    @if (Model.Orders != null && Model.Orders.Any())
+    {
+        <div class="mt-4">
+            <h4>Замовлення</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@order.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        <div class="mt-4">
+            <h4>Відгуки</h4>
+            <div class="list-group">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span>Рейтинг: @review.Rating</span>
+                            <small>@review.CreatedDate.ToString()</small>
+                        </div>
+                        <p class="mb-1">@review.Comment</p>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+ *@
+@*     <div class="mt-4 text-center">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Редагувати</a>
+        <a asp-action="Index" class="btn btn-secondary me-2">Назад до списку</a>
+    </div>
+</div> *@

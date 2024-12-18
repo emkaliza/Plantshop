@@ -1,4 +1,5 @@
-﻿using PlantShop.Models;
+﻿using Plantshop.Models;
+using PlantShop.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -74,6 +75,7 @@ namespace PlantShop.Models
         public virtual ICollection<OrderItem>? OrderItems { get; set; }
         public virtual ICollection<CartItem>? CartItems { get; set; }
         public virtual ICollection<Favorite>? Favorites { get; set; }
+        public virtual ICollection<Wishlist>? Wishlists { get; set; }
 
         public decimal CurrentPrice
         {

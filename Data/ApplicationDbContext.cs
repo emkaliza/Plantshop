@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Plantshop.Models;
 using PlantShop.Models;
 
 namespace Plantshop.Data
@@ -20,6 +21,7 @@ namespace Plantshop.Data
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -119,6 +121,21 @@ namespace Plantshop.Data
                     .IsRequired()
                     .HasMaxLength(100);
             });
+
+            // Зв'язок з користувачем
+            modelBuilder.Entity<Wishlist>()
+                   .HasOne(w => w.User)
+                   .WithMany(u => u.Wishlists)
+                   .HasForeignKey(w => w.UserId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            // Зв'язок з рослиною
+            modelBuilder.Entity<Wishlist>()
+                   .HasOne(w => w.Plant)
+                   .WithMany(p => p.Wishlists)
+                   .HasForeignKey(w => w.PlantId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
             // Indexes
             modelBuilder.Entity<Plant>()
             .HasIndex(p => p.Name);

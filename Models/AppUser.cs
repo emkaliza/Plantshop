@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Plantshop.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -36,6 +37,7 @@ namespace PlantShop.Models
         public ICollection<Review>? Reviews { get; set; }
         public Cart? Cart { get; set; }
         public ICollection<Favorite>? Favorites { get; set; }
+        public ICollection<Wishlist> Wishlists { get; set; }
 
         public AppUser()
         {

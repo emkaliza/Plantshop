@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Моя облікова запись - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PlantShop.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container d-flex flex-column min-vh-100">
+        <header class="border-bottom">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand green logo" href="#">
+                        <img class="green" src="/img/logo.svg" alt="">
+                        РОСЛИННИЦЯ
+                    </a>
+                    <button class="navbar-toggler green" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+                            </li>
+                            <li class="nav-item ms-5">
+                                <a class="nav-link" href="#">Магазин</a>
+                            </li>
+                            <li class="nav-item mx-5">
+                                <a class="nav-link" href="#">Догляд</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Блог</a>
+                            </li>
+                        </ul>
+                        <div class="search-container">
+                            <img src="~/img/search.svg" alt="search" onclick="toggleSearch()" class="d-none">
+                            <form asp-controller="Home" asp-action="Search" method="get" class="search-form green-light" id="searchForm">
+                                <input class="form-control search-input"
+                                       type="search"
+                                       placeholder="Пошук рослин..."
+                                       name="searchTerm"
+                                       id="searchInput">
+                            </form>
+                        </div>
+                        <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout">
+                            <button type="submit" class="btn btn-green px-4">
+                                <span class="d-flex align-items-center gap-1">
+                                    <i class="bi bi-box-arrow-left me-2"></i> Вихід
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="flex-grow-1">
+            <div class="container">
+                <div class="row flex-nowrap">
+                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
+                            <p class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                                <span class="fs-5 d-none d-sm-inline">Мій обліковий запис</span>
+                            </p>
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                <li class="nav-item">
+                                    <a asp-area="Customer" asp-controller="Customer" asp-action="Index" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Customer" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-person me-2"></i><span class="ms-1 d-none d-sm-inline">Головна</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="Customer" asp-controller="Customer" asp-action="Details" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Customer" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-person me-2"></i><span class="ms-1 d-none d-sm-inline">Профіль</span>
+                                    </a>
+                                </li>
+                                <li class=nav-item>
+                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link px-0 align-middle @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-geo me-2"></i> <span class="ms-1 d-none d-sm-inline">Адреса</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-cart2 me-1"></i> <span class="ms-1 d-none d-sm-inline">Замовлення</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-heart me-2"></i><span class="ms-1 d-none d-sm-inline">Бажання</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                        <i class="fs-5 bi-exclamation-triangle me-1"></i> <span class="ms-1 d-none d-sm-inline">Підтримка</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xl-10">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="-auto">
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/node_modules/toastr/toastr.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

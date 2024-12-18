@@ -5,6 +5,7 @@ using Plantshop.ViewModels;
 using PlantShop.Models;
 using System.Diagnostics;
 using System.Numerics;
+using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Plantshop.Controllers
@@ -165,6 +166,77 @@ namespace Plantshop.Controllers
             return View("Index", await GetHomeIndexViewModel(query, categoryId, minPrice, maxPrice,
         sortOrder, isNew, isOnSale, searchTerm, pageNumber));
         }
+
+        public async Task<IActionResult> PlantDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var plant = await _context.Plants
+                .Include(p => p.Category)
+                .Include(p => p.Discount)
+                .Include(p => p.Reviews)
+                .FirstOrDefaultAsync(m => m.PlantId == id);
+
+            if (plant == null)
+            {
+                return NotFound();
+            }
+
+            // Отримуємо інформацію про наявність у списку бажань для поточного користувача
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var isInWishlist = false;
+            if (userId != null)
+            {
+                isInWishlist = await _context.Wishlists
+                    .AnyAsync(w => w.UserId == userId && w.PlantId == id);
+            }
+
+            var viewModel = new PlantDetailsViewModel
+            {
+                PlantId = plant.PlantId,
+                Name = plant.Name,
+                Description = plant.Description,
+                BasePrice = (decimal)plant.BasePrice,
+                DiscountPrice = plant.DiscountPrice,
+                IsOnSale = plant.IsOnSale,
+                ImageUrl = plant.ImageUrl,
+                CategoryName = plant.Category.Name,
+                AvailableStock = plant.StockQuantity,
+                IsInWishlist = isInWishlist,
+                Reviews = plant.Reviews.Select(r => new ReviewViewModel
+                {
+                    UserName = r.UserId.ToString(),
+                    Rating = (int)r.Rating,
+                    Comment = r.Comment,
+                    CreatedDate = (DateTime)r.CreatedDate
+                }).ToList(),
+                RelatedPlants = await GetRelatedPlants(plant.CategoryId, plant.PlantId)
+            };
+
+            return View(viewModel);
+        }
+
+        // Приватний метод для отримання схожих рослин
+        private async Task<List<PlantCardViewModel>> GetRelatedPlants(int categoryId, int currentPlantId)
+        {
+            return await _context.Plants
+                .Where(p => p.CategoryId == categoryId && p.PlantId != currentPlantId)
+                .Take(4)
+                .Select(p => new PlantCardViewModel
+                {
+                    PlantId = p.PlantId,
+                    Name = p.Name,
+                    BasePrice = (decimal)p.BasePrice,
+                    DiscountPrice = (decimal)p.DiscountPrice,
+                    IsOnSale = p.IsOnSale,
+                    ImageUrl = p.ImageUrl
+                })
+                .ToListAsync();
+        }
+
         public IActionResult Privacy()
         {
             return View();

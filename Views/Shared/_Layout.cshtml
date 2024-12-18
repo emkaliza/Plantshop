@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@ViewData["Title"] - PlantShop</title>
+    <title>РОСЛИННИЦЯ - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -11,7 +11,7 @@
         <header class="border-bottom-green">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand green logo" href="#">
+                    <a asp-action="Index" class="navbar-brand green logo">
                         <img class="green" src="~/img/logo.svg" alt="">
                         РОСЛИННИЦЯ
                     </a>
@@ -23,7 +23,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link" aria-current="page" href="./index.html">Головна</a>
+                                <a asp-action="Index" class="nav-link" aria-current="page">Головна</a>
                             </li>
                             <li class="nav-item ms-5">
                                 <a class="nav-link" href="./product_cart.html">Магазин</a>
