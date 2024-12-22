@@ -1,0 +1,423 @@
+﻿@model List<CartItem>
+@{
+    ViewData["Title"] = "Кошик";
+}
+
+@* <div class="container my-4">
+    <h2 class="mb-4">Кошик</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Ваш кошик порожній. <a href="/Plants">Перейти до каталогу</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Фото</th>
+                        <th>Назва</th>
+                        <th>Ціна</th>
+                        <th>Кількість</th>
+                        <th>Сума</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="cart-item-@item.CartItemId">
+                            <td>
+                                <img src="@item.Plant.ImageUrl" alt="@item.Plant.Name" style="max-width: 100px;" class="img-thumbnail" />
+                            </td>
+                            <td>@item.Plant.Name</td>
+                            <td>@item.Plant.CurrentPrice.ToString("C2")</td>
+                            <td>
+                                <div class="quantity-controls" style="width: 120px;">
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, -1)">-</button>
+                                        <input type="number" class="form-control text-center" value="@item.Quantity"
+                                               min="1" onchange="onQuantityChange(@item.CartItemId, this.value)">
+                                        <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, 1)">+</button>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="item-total">@((item.Plant.CurrentPrice * item.Quantity).ToString("C2"))</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="removeFromCart(@item.CartItemId)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end"><strong>Загальна сума:</strong></td>
+                        <td id="cart-total">@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="/" class="btn btn-outline-primary">Продовжити покупки</a>
+            <a href="/Checkout" class="btn btn-success">Оформити замовлення</a>
+        </div>
+    }
+</div> *@
+
+<main class="flex-shrink-0 mb-5">
+    <div class="my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="bi bi-house-fill"></i></a></li>
+                <li class="breadcrumb-item active"><a href="/">Головна</a></li>
+                <li class="breadcrumb-item" aria-current="page">Магазин</li>
+                <li class="breadcrumb-item" aria-current="page">Кошик</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-8 p-3">
+            @if (!Model.Any())
+            {
+                <div class="h4 green m-5">
+                    Ваш кошик порожній.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center fw-bold">Фото</th>
+                                <th class="text-center fw-bold">Назва</th>
+                                <th class="text-center fw-bold">Ціна</th>
+                                <th class="text-center fw-bold">Кількість</th>
+                                <th class="text-center fw-bold">Сума</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="cart-item-@item.CartItemId" class="align-baseline">
+                                    <td class="text-center">
+                                        <a href="/Home/PlantDetails/@item.PlantId">
+                                            <img src="@item.Plant.ImageUrl" alt="@item.Plant.Name" style="max-width: 100px;" class="img-thumbnail" />
+                                        </a>
+                                    </td>
+                                    <td class="text-center">@item.Plant.Name</td>
+                                    <td class="text-center">@item.Plant.CurrentPrice.ToString("C2")</td>
+                                    <td class="text-center">
+                                        @* <div class="quantity-controls" style="width: 120px;">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, -1)">-</button>
+                                                <input type="number" class="form-control text-center" value="@item.Quantity"
+                                                       min="1" onchange="onQuantityChange(@item.CartItemId, this.value)">
+                                                <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, 1)">+</button>
+                                            </div>
+                                        </div> *@
+                                        <p>@item.Quantity</p>
+                                    </td>
+                                    <td class="item-total text-center">@((item.Plant.CurrentPrice * item.Quantity).ToString("C2"))</td>
+                                    <td text-center>
+                                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(@item.CartItemId)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>Загальна сума:</strong></td>
+                                <td id="cart-total">@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="col-md-4 offset-md-0 px-5 py-3">
+            <h5>Всього в кошику</h5>
+            <hr class="green">
+            <form>
+                <h4><strong>Застосувати купон</strong></h4>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2 my-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-green" placeholder="Введіть код купона тут..."
+                               aria-label="Recipient's code coupon" aria-describedby="button-addon3">
+                        <button class="btn btn-green px-4" type="button" id="button-addon3">Подати заявку</button>
+                    </div>
+                </div>
+            </form>
+            <dl class="row">
+                <dt class="col-6 text-start">Проміжний підсумок</dt>
+                <dd class="col-6 text-end"><strong><span>&#8372;</span>12345.00</strong></dd>
+                <dt class="col-6 text-start">Купон Знижка</dt>
+                <dd class="col-6 text-end"><strong>(-) 0.00</strong></dd>
+                <dt class="col-6 text-start">Доставка</dt>
+                <dd class="col-6 text-end"><strong><span>&#8372;</span>15.00</strong></dd>
+                <dt class="col-6 text-start"><strong>Всього</strong></dt>
+                <dd class="col-6 text-end"><strong>&#8372;12360.00</strong></dd>
+            </dl>
+            <a href="/Checkout" class="btn btn-green w-100">Перейдіть до оформлення замовлення</a>
+        </div>
+        <h3 class="green mt-5"><strong>Вас може зацікавити</strong></h3>
+        <hr class="green">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators carousel-green">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1">
+                    <i class="bi bi-circle-fill"></i>
+                </button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        class="bi bi-circle-fill" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class=""
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row gap-2 py-3 h-100">
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_41.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_41.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Червона бромелія</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_41.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_41.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_41.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row gap-2 py-3 h-100">
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_44.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_44.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Червона бромелія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_44.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_44.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_44.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row gap-2 py-3 h-100">
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_45.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_45.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Червона бромелія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_45.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_45.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-0 h-100">
+                                <img src="./img/Group_45.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
+                                    <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script>
+        function updateQuantity(cartItemId, change) {
+            const input = document.querySelector(`#cart-item-${cartItemId} input[type="number"]`);
+            const newQuantity = parseInt(input.value) + change;
+            if (newQuantity < 1) return;
+
+            onQuantityChange(cartItemId, newQuantity);
+        }
+
+        function onQuantityChange(cartItemId, quantity) {
+            $.ajax({
+                url: '/Cart/UpdateQuantity',
+                type: 'POST',
+                data: { cartItemId, quantity },
+                success: function (response) {
+                    if (response.success) {
+                        // Оновлюємо відображення на сторінці
+                        updateCartDisplay(response);
+                        showNotification(response.message, 'success');
+                    } else {
+                        showNotification(response.message, 'error');
+                    }
+                },
+                error: function () {
+                    showNotification('Помилка при оновленні кількості', 'error');
+                }
+            });
+        }
+
+        function removeFromCart(cartItemId) {
+            if (!confirm('Ви впевнені, що хочете видалити цей товар з кошика?')) return;
+
+            $.ajax({
+                url: '/Cart/RemoveItem',
+                type: 'POST',
+                data: { cartItemId },
+                success: function (response) {
+                    if (response.success) {
+                        // Видаляємо рядок з таблиці
+                        $(`#cart-item-${cartItemId}`).fadeOut(300, function () {
+                            $(this).remove();
+                            // Оновлюємо відображення
+                            updateCartDisplay(response);
+
+                            // Якщо кошик порожній, оновлюємо сторінку
+                            if (response.itemsCount === 0) {
+                                location.reload();
+                            }
+                        });
+                        showNotification(response.message, 'success');
+                    } else {
+                        showNotification(response.message, 'error');
+                    }
+                },
+                error: function () {
+                    showNotification('Помилка при видаленні товару', 'error');
+                }
+            });
+        }
+
+        function updateCartDisplay(response) {
+            // Оновлюємо загальну суму
+            $('#cart-total').text(new Intl.NumberFormat('uk-UA', {
+                style: 'currency',
+                currency: 'UAH'
+            }).format(response.total));
+
+            // Оновлюємо лічильник кошика в хедері
+            $('.cart-counter').text(response.itemsCount);
+        }
+    </script>
+}

@@ -1,0 +1,34 @@
+﻿@using PlantShop.Models
+@model AppUser
+@{
+    ViewData["Title"] = "Обліковий запис користувача";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2 class="text-center my-5">@ViewData["Title"]</h2>
+
+<div class="container col-md-8 mx-auto">
+    <dl class="row">
+        <dt class="col-sm-4">Ім'я</dt>
+        <dd class="col-sm-8 text-end">@Model.FirstName</dd>
+
+        <dt class="col-sm-4">Прізвище</dt>
+        <dd class="col-sm-8 text-end">@Model.LastName</dd>
+
+        <dt class="col-sm-4">Email</dt>
+        <dd class="col-sm-8 text-end">@Model.Email</dd>
+
+        <dt class="col-sm-4">Телефон</dt>
+        <dd class="col-sm-8 text-end">@Model.PhoneNumber</dd>
+
+        <dt class="col-sm-4">Адреса</dt>
+        <dd class="col-sm-8 text-end">@Model.Address</dd>
+
+        <dt class="col-sm-4">Дата реєстрації</dt>
+        <dd class="col-sm-8 text-end">@Model.RegistrationDate.ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+    <div class="d-flex justify-content-evenly mt-5">
+        <a href="/Customer/Customer/Profile" class="btn btn-primary">Редагувати профіль</a>
+        <a href="/Customer/Customer/ChangePassword" class="btn btn-outline-primary">Змінити пароль</a>
+    </div>
+</div>

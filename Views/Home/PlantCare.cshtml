@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Догляд за рослинами";
+}
+
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 my-5 green">@ViewData["Title"]</h1>
+        <p class="lead mb-4">Дізнайтеся все про правильний догляд за вашими рослинами</p>
+    </div>
+</section>
+<!-- Care Categories -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Основні категорії догляду</h2>
+        <div class="row g-4">
+            <!-- Category 1 -->
+            <div class="col-md-4">
+                <div class="card care-card h-100">
+                    <div class="card-body bg-light-subtle rounded text-center">
+                        <i class="bi bi-droplet care-icon"></i>
+                        <h3 class="h5 my-3">Полив</h3>
+                        <p class="text-muted">Правильний режим поливу рослин</p>
+                        <a href="#" class="btn btn-outline-green my-3">Дізнатися більше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 2 -->
+            <div class="col-md-4">
+                <div class="card care-card h-100">
+                    <div class="card-body bg-light-subtle rounded text-center">
+                        <i class="bi bi-sun care-icon"></i>
+                        <h3 class="h5 my-3">Освітлення</h3>
+                        <p class="text-muted">Вимоги до світла та розміщення рослин</p>
+                        <a href="#" class="btn btn-outline-green my-3">Дізнатися більше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Category 3 -->
+            <div class="col-md-4">
+                <div class="card care-card h-100">
+                    <div class="card-body bg-light-subtle rounded text-center">
+                        <i class="bi bi-flower1 care-icon"></i>
+                        <h3 class="h5 my-3">Добрива</h3>
+                        <p class="text-muted">Підживлення та удобрення кімнатних рослин</p>
+                        <a href="#" class="btn btn-outline-green my-3">Дізнатися більше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Care Tips -->
+<section class="green-light py-5">
+    <div class="container">
+        <h2 class="text-center green mb-5">Корисні поради</h2>
+        <div class="row g-4">
+            <!-- Tip 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="~/img/01.jpeg" class="card-img-top" alt="Догляд за рослинами">
+                    <div class="card-body">
+                        <h5 class="card-title">Базовий догляд за кімнатними рослинами</h5>
+                        <p class="card-text">Дізнайтеся основні правила догляду за популярними видами кімнатних рослин.</p>
+                        <a href="#" class="btn btn-link text-decoration-none green">Читати далі →</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tip 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="~/img/02.jpeg" class="card-img-top" alt="Сезонний догляд">
+                    <div class="card-body">
+                        <h5 class="card-title">Сезонний догляд</h5>
+                        <p class="card-text">Особливості догляду за рослинами в різні пори року.</p>
+                        <a href="#" class="btn btn-link text-decoration-none green">Читати далі →</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tip 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="~/img/03.jpeg" class="card-img-top" alt="Діагностика проблем">
+                    <div class="card-body">
+                        <h5 class="card-title">Діагностика проблем</h5>
+                        <p class="card-text">Як визначити та вирішити поширені проблеми з рослинами.</p>
+                        <a href="#" class="btn btn-link text-decoration-none green">Читати далі →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

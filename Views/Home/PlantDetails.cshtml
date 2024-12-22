@@ -5,6 +5,8 @@
     ViewData["Title"] = Model.Name;
 }
 
+@* @Html.AntiForgeryToken() *@
+
 <div class="my-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -19,9 +21,18 @@
         <img src="~/@Model.ImageUrl" alt="">
     </div>
     <div class="col-8">
-        <h5>@Model.Name</h5>
+        <h3 class="mb-3">@Model.Name</h3>
         <div class="d-flex justify-content-between border-bottom my-3">
-            <h5 class="green">&#8372; @Model.CurrentPrice</h5>
+            @if (Model.IsOnSale)
+            {
+                <h5 class="current-price">&#8372;@Model.DiscountPrice</h5>
+                <span class="old-price ms-2"><h5>&#8372;@Model.BasePrice</h5></span>
+            }
+            else
+            {
+                <h5 class="green">&#8372; @Model.CurrentPrice</h5>
+            }
+            
             <ul class="list-inline text-end">
                 <li class="list-inline-item"><p><i class="bi bi-star-fill text-warning"></i></p></li>
                 <li class="list-inline-item"><p><i class="bi bi-star-fill text-warning"></i></p></li>
@@ -36,20 +47,54 @@
             <p>
                 @Model.Description
             </p>
-            @* <p><b>Розміри:</b></p>
-            <div class="d-flex justify-content-start gap-3">
-                <a href="#" class="plant-size-green text-center green mb-3"><b>S</b></a>
-                <a href="#" class="plant-size text-center text-secondary mb-3"><b>M</b></a>
-                <a href="#" class="plant-size text-center text-secondary mb-3"><b>L</b></a>
-                <a href="#" class="plant-size text-center text-secondary mb-3"><b>XL</b></a>
-            </div> *@
-            <div class="d-flex justify-content-start gap-3 mt-5">
-                <button type="button" class="btn btn-green rounded-circle px-3">-</button>
-                <p class="my-auto">1</p>
-                <button type="button" class="btn btn-green rounded-circle px-3">+</button>
-                <a href="#" class="btn btn-green">Купити зараз</a>
+            <!-- Статус наявності -->
+            <div class="stock-status">
+                @if (Model.IsInStock)
+                {
+                    <span class="in-stock h5">В наявності (@Model.AvailableStock шт.)</span>
+                }
+                else
+                {
+                    <span class="out-of-stock">Немає в наявності</span>
+                }
+            </div>
+            <div class="d-flex justify-content-start gap-3 mt-3">
+                <button type="button" class="btn btn-green rounded-circle px-3" id="decrease">-</button>
+                <p class="my-auto" id="quantity">1</p>
+                <button type="button" class="btn btn-green rounded-circle px-3" id="increase">+</button>
+                <input type="hidden" name="@Model.Quantity" id="quantityInput" value="1" />
+                <!-- Кнопки дій -->
+                <div class="">
+                    @if (Model.CanBuyNow)
+                    {
+                        <button class="btn btn-green me-3" onclick="buyNow(@Model.PlantId)">
+                            Купити зараз
+                        </button>
+                    }
+
+                    @if (Model.CanAddToCart)
+                    {
+                        <button class="btn btn-outline-green me-3" onclick="addToCart(@Model.PlantId)">
+                            Додати до кошика
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-outline-green me-3" disabled>
+                            Немає в наявності
+                        </button>
+                    }
+
+                    <button class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
+                            onclick="toggleWishlist(@Model.PlantId)">
+                        <i class="bi bi-heart"></i>
+                       @*  @(Model.IsInWishlist ? "Видалити з бажаного" : "Додати до бажаного") *@
+                    </button>
+                </div>
+                @* <a href="#" class="btn btn-green">Купити зараз</a>
                 <a href="#" class="btn btn-outline-green">Додати до кошика</a>
-                <a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a>
+                <a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
+                
             </div>
         </div>
     </div>
@@ -62,178 +107,136 @@
         </div>
         <p></p>
             @Model.Description
-   @*      <p>Керамічні циліндричні кашпо поставляються з дерев'яною підставкою, яка допоможе підняти ваші рослини над землею. Керамічні циліндричні кашпо поставляються з дерев'яною підставкою, яка допоможе підняти ваші рослини над землею. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Керамічні циліндричні кашпо поставляються з дерев'яною підставкою, яка допоможе підняти ваші рослини над землею.</p>
-        <h5><b>Вітальня:</b></h5>
-        <p>Керамічні циліндричні кашпо постачаються з дерев'яною підставкою, яка допомагає підняти рослини над землею. Керамічні циліндричні кашпо постачаються з дерев'яною підставкою, яка допомагає підняти рослини над землею. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h5><b>Їдальня:</b></h5>
-        <p>Користь кімнатних рослин безмежна. Окрім очищення повітря від шкідливих токсинів, вони допомагають покращити настрій, зменшити стрес і забезпечити кращий сон. Наповніть кожну кімнату вашого будинку кімнатними рослинами, і їхні відновлювальні властивості покращать ваше життя.</p>
-        <h5><b>Офіс:</b></h5>
-        <p>Керамічні циліндричні кашпо постачаються з дерев'яною підставкою, яка допомагає підняти рослини над землею. Керамічні циліндричні кашпо постачаються з дерев'яною підставкою, яка допомагає підняти рослини над землею. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> *@
     </div>
-    <h3 class="green"><strong>Вас може зацікавити</strong></h3>
-    <hr class="green">
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators carousel-green">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><i class="bi bi-circle-fill"></i></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bi bi-circle-fill" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="" aria-label="Slide 3"></button>
+    @if(Model.RelatedPlants.Count() != 0)
+    {
+        <h3 class="green"><strong>Вас може зацікавити</strong></h3>
+        <hr class="green">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            @if (Model.RelatedPlants.Count() > 1)
+            {
+                <div class="carousel-indicators carousel-green">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><i class="bi bi-circle-fill"></i></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bi bi-circle-fill" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="" aria-label="Slide 3"></button>
+                </div>
+            }
+        <div class="container carousel-inner">
+                @for (int i = 0; i < Model.RelatedPlants.Count; i++)
+                {
+                    var group = Model.RelatedPlants[i];
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row gap-2 py-3 h-100">
+                            @foreach (var plant in group)
+                            {
+                                <div class="col">
+                                    <div class="card border-0 w-25 h-100">
+                                        <a asp-action="PlantDetails" asp-route-id="@plant.PlantId">
+                                            <img src="~/@plant.ImageUrl" class="card-img-top" alt="@plant.Name">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><strong>@plant.Name</strong></h5>
+                                            <p class="card-text green">
+                                                @if (plant.IsOnSale)
+                                                {
+                                                    <strong class="text-green">&#8372;@plant.DiscountPrice</strong>
+                                                    <del class="text-secondary ms-2"><strong>&#8372;@plant.BasePrice</strong></del>
+                                                }
+                                                else
+                                                {
+                                                    <strong>&#8372;@plant.BasePrice</strong>
+                                                }
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            @* <div class="carousel-item active">
+                <div class="row gap-2 py-3 h-100">
+                    @foreach(var plant in Model.RelatedPlants)
+                    {
+                        <div class="col">
+                            <div class="card border-0 w-25 h-100">
+                                <a asp-action="PlantDetails" asp-route-id="@plant.PlantId">
+                                    <img src="~/@plant.ImageUrl" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>@plant.Name</strong></h5>
+                                    <p class="card-text green"><strong>&#8372;@plant.BasePrice</strong></p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    }
+                </div> 
+            </div> *@
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row gap-2 py-3 h-100">
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_41.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong>&#8372;1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_41.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Червона бромелія</strong></h5>
-                                <p class="card-text green"><strong>&#8372;1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_41.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
-                                <p class="card-text green"><strong>&#8372;1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_41.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
-                                <p class="card-text green"><strong>&#8372;1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_41.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong>&#8372;1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row gap-2 py-3 h-100">
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_44.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_44.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Червона бромелія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_44.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_44.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_44.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row gap-2 py-3 h-100">
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_45.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_45.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Червона бромелія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_45.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Алюмінієвий завод</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_45.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Папороть пташине гніздо</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-0 h-100">
-                            <img src="./img/Group_45.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Пляжна павутинна лілія</strong></h5>
-                                <p class="card-text green"><strong><span>&#8372;</span>1223</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        @if (Model.RelatedPlants.Count() > 1)
+        {
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        }
     </div>
+    }
 </div>
+
+@section Scripts{
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const decreaseButton = document.getElementById("decrease");
+            const increaseButton = document.getElementById("increase");
+            const quantityDisplay = document.getElementById("quantity");
+            const quantityInput = document.getElementById("quantityInput");
+
+            let quantity = parseInt(quantityDisplay.textContent, @Model.AvailableStock);
+            const maxQuantity = @Model.AvailableStock; // Максимально допустима кількість
+            const minQuantity = 1;  // Мінімально допустима кількість
+
+            decreaseButton.addEventListener("click", function () {
+                    if (quantity > minQuantity) {
+                quantity--;
+            quantityDisplay.textContent = quantity;
+            quantityInput.value = quantity; // Оновлюємо приховане поле для передачі значення на сервер
+                    }
+                });
+
+            increaseButton.addEventListener("click", function () {
+                    if (quantity < maxQuantity) {
+                quantity++;
+            quantityDisplay.textContent = quantity;
+            quantityInput.value = quantity; // Оновлюємо приховане поле для передачі значення на сервер
+                    }
+                });
+            });
+
+            function toggleWishlist(plantId) {
+                const isInWishlist = document.querySelector('.wishlist-btn').classList.contains('active');
+                const url = isInWishlist ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ plantId: plantId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const btn = document.querySelector('.wishlist-btn');
+                        btn.classList.toggle('active');
+                        btn.textContent = isInWishlist ? 'Додати до бажаного' : 'Видалити з бажаного';
+                    }
+                });
+            }
+    </script>
+}

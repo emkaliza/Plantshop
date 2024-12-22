@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Plantshop.Data;
+using Plantshop.Services.Implementations;
+using Plantshop.Services.Interfaces;
 using PlantShop.Data;
 using PlantShop.Models;
 using PlantShop.ViewModels;
@@ -23,9 +25,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IPlantService, PlantService>();
+
 builder.Services.Configure<IISServerOptions>(options =>
 {
     options.MaxRequestBodySize = 5 * 1024 * 1024; // 5MB
+});
+
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "X-CSRF-TOKEN";
 });
 
 var app = builder.Build();

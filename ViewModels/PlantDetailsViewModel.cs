@@ -11,7 +11,7 @@
         public string ImageUrl { get; set; }
         public string CategoryName { get; set; }
         public List<ReviewViewModel> Reviews { get; set; }
-        public List<PlantCardViewModel> RelatedPlants { get; set; }
+        public List<List<PlantCardViewModel>> RelatedPlants { get; set; }
 
         // Ціна, яка буде відображатися (зі знижкою або базова)
         public decimal CurrentPrice => IsOnSale ? DiscountPrice ?? BasePrice : BasePrice;

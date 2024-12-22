@@ -36,6 +36,16 @@
                                 <a class="nav-link" href="#">Блог</a>
                             </li>
                         </ul>
+                        <div class="search-container">
+                            <img src="~/img/search.svg" alt="search" onclick="toggleSearch()" class="d-none">
+                            <form asp-controller="Home" asp-action="Search" method="get" class="search-form green-light" id="searchForm">
+                                <input class="form-control search-input"
+                                       type="search"
+                                       placeholder="Пошук рослин..."
+                                       name="searchTerm"
+                                       id="searchInput">
+                            </form>
+                        </div>
                         <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout">
                             <button type="submit" class="btn btn-green px-4">
                                 <span class="d-flex align-items-center gap-1">

@@ -90,7 +90,7 @@ namespace PlantShop.Controllers
                     await _userManager.AddToRoleAsync(user, "Customer");
                     // Автоматичний вхід після реєстрації
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Customer", new { area = "Customer" }) });
                 }
 
                 var errors = result.Errors.Select(e => e.Description);

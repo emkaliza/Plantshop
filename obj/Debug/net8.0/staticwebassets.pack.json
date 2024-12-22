@@ -177,6 +177,10 @@
       "PackagePath": "staticwebassets\\js\\auth.js"
     },
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\cart.js",
+      "PackagePath": "staticwebassets\\js\\cart.js"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },

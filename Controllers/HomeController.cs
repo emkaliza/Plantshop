@@ -220,11 +220,11 @@ namespace Plantshop.Controllers
         }
 
         // Приватний метод для отримання схожих рослин
-        private async Task<List<PlantCardViewModel>> GetRelatedPlants(int categoryId, int currentPlantId)
+        private async Task<List<List<PlantCardViewModel>>> GetRelatedPlants(int categoryId, int currentPlantId)
         {
-            return await _context.Plants
+            var plants = await _context.Plants
                 .Where(p => p.CategoryId == categoryId && p.PlantId != currentPlantId)
-                .Take(4)
+                .Take(15)
                 .Select(p => new PlantCardViewModel
                 {
                     PlantId = p.PlantId,
@@ -235,9 +235,22 @@ namespace Plantshop.Controllers
                     ImageUrl = p.ImageUrl
                 })
                 .ToListAsync();
+
+            return plants
+           .Select((plant, index) => new { plant, index })
+           .GroupBy(x => x.index / 5)
+           .Take(3) // Не більше трьох груп
+           .Select(group => group.Select(x => x.plant).ToList())
+           .ToList();
+
         }
 
-        public IActionResult Privacy()
+        public IActionResult PlantCare()
+        {
+            return View();
+        }
+
+        public IActionResult Blog()
         {
             return View();
         }

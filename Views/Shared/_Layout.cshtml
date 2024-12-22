@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,18 +24,24 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-                            <li class="nav-item active">
-                                <a asp-action="Index" class="nav-link" aria-current="page">Головна</a>
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                                <a asp-controller="Home" asp-action="Index" class="nav-link" aria-current="page">Головна</a>
                             </li>
-                            <li class="nav-item ms-5">
-                                <a class="nav-link" href="./product_cart.html">Магазин</a>
+                            <li class="nav-item ms-5 @(ViewContext.RouteData.Values["controller"]?.ToString() == "Cart" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                                <a class="nav-link" asp-controller="Cart" asp-action="Index">Магазин</a>
                             </li>
-                            <li class="nav-item mx-5">
-                                <a class="nav-link" href="./plant-care.html">Догляд</a>
+                            <li class="nav-item ms-5 @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "PlantCare" ? "active" : "")">
+                                <a asp-controller="Home" asp-action="PlantCare" class="nav-link">Догляд</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./plant_blog.html">Блог</a>
+                            <li class="nav-item ms-5 @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Blog" ? "active" : "")">
+                                <a asp-controller="Home" asp-action="Blog" class="nav-link">Блог</a>
                             </li>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item ms-5">
+                                    <a asp-area="Customer" asp-controller="Customer" asp-action="Index" class="nav-link">Кабінет</a>
+                                </li>
+                            }
                         </ul>
                         <div class="search-container">
                             <img src="~/img/search.svg" alt="search" onclick="toggleSearch()">
@@ -45,9 +53,9 @@
                                        id="searchInput">
                             </form>
                         </div>
-                        <a href="#" class="mx-4">
+                        <a asp-controller="Cart" asp-action="Index" class="mx-4">
                             <img src="~/img/cart.svg" alt="">
-                            <span class="position-absolute translate-middle badge bg-green rounded-pill count-items">0</span>
+                            <span class="position-absolute translate-middle badge bg-green rounded-pill cart-counter">0</span>
                         </a>
                         <partial name="_LoginPartial" />
                         <partial name="_RegisterPartial" />
@@ -196,6 +204,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/auth.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -18,7 +18,7 @@
             <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().Role)</th>
             <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().RegistrationDate)</th>
             <th class="text-success h5 py-3">@Html.DisplayNameFor(model => model.Items.First().LastLoginDate)</th>
-            <th class="text-success h5 py-3">Actions</th>
+            <th class="text-success h5 py-3"></th>
         </tr>
     </thead>
     <tbody class="table-group-divider green">
@@ -32,7 +32,7 @@
                 <td>@Html.DisplayFor(modelItem => user.RegistrationDate)</td>
                 <td>@Html.DisplayFor(modelItem => user.LastLoginDate)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-primary">Редагування</a>
+                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-primary">Редагувати</a>
                     <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-secondary">Деталі</a>
                 </td>
             </tr>
