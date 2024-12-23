@@ -27,6 +27,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IPlantService, PlantService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.Configure<IISServerOptions>(options =>
 {

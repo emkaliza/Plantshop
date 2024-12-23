@@ -1,0 +1,50 @@
+﻿@model Order
+
+
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h3>Замовлення успішно оформлене!</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Деталі замовлення</h4>
+                    <p><strong>Номер замовлення:</strong> @Model.OrderId</p>
+                    <p><strong>Дата:</strong> @Model.OrderDate.ToString("dd.MM.yyyy HH:mm")</p>
+                    <p><strong>Статус:</strong> @Model.Status</p>
+                    <p><strong>Спосіб доставки:</strong> @Model.DeliveryMethod</p>
+                    <p><strong>Адреса доставки:</strong> @Model.ShippingAddress</p>
+                    <p><strong>Спосіб оплати:</strong> @Model.PaymentMethod</p>
+                    <p><strong>Статус оплати:</strong> @Model.PaymentStatus</p>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>Замовлені товари</h4>
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <h6>@item.Plant.Name</h6>
+                                <small>Кількість: @item.Quantity x @item.PriceAtTime.ToString("C")</small>
+                            </div>
+                            <div>
+                                @((item.PriceAtTime * item.Quantity).ToString("C"))
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <h5>Загальна сума:</h5>
+                        <h5>@Model.TotalAmount.ToString("C")</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Повернутися на головну</a>
+            </div>
+        </div>
+    </div>
+</div>
