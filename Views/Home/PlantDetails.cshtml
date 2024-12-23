@@ -5,7 +5,7 @@
     ViewData["Title"] = Model.Name;
 }
 
-@* @Html.AntiForgeryToken() *@
+@Html.AntiForgeryToken()
 
 <div class="my-4">
     <nav aria-label="breadcrumb">
@@ -62,19 +62,19 @@
                 <button type="button" class="btn btn-green rounded-circle px-3" id="decrease">-</button>
                 <p class="my-auto" id="quantity">1</p>
                 <button type="button" class="btn btn-green rounded-circle px-3" id="increase">+</button>
-                <input type="hidden" name="@Model.Quantity" id="quantityInput" value="1" />
+                <input type="hidden" name="@Model.Quantity" id="quantityInput" />
                 <!-- Кнопки дій -->
                 <div class="">
                     @if (Model.CanBuyNow)
                     {
-                        <button class="btn btn-green me-3" onclick="buyNow(@Model.PlantId)">
+                        <button class="btn btn-green me-3" onclick="buyNow(@Model.PlantId, document.getElementById('quantity').textContent)">
                             Купити зараз
                         </button>
                     }
 
                     @if (Model.CanAddToCart)
                     {
-                        <button class="btn btn-outline-green me-3" onclick="addToCart(@Model.PlantId)">
+                        <button class="btn btn-outline-green me-3" onclick="addToCart(@Model.PlantId, document.getElementById('quantity').textContent)">
                             Додати до кошика
                         </button>
                     }
@@ -91,9 +91,7 @@
                        @*  @(Model.IsInWishlist ? "Видалити з бажаного" : "Додати до бажаного") *@
                     </button>
                 </div>
-                @* <a href="#" class="btn btn-green">Купити зараз</a>
-                <a href="#" class="btn btn-outline-green">Додати до кошика</a>
-                <a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
+                @*<a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
                 
             </div>
         </div>

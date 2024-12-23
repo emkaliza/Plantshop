@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Plantshop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78871a8414122452ac45ece5f6168ad225d2add4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0898722097de3227a09154fc7ee1457595f9a581")]
 [assembly: System.Reflection.AssemblyProductAttribute("Plantshop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Plantshop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

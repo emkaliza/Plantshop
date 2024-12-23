@@ -37,7 +37,7 @@ namespace Plantshop.Services.Implementations
             return cart;
         }
 
-        public async Task AddToCartAsync(int plantId, string userId)
+        public async Task AddToCartAsync(int plantId, string userId, int quantity)
         {
             // Перевіряємо наявність товару
             var plant = await _plantService.GetPlantByIdAsync(plantId);
@@ -61,7 +61,7 @@ namespace Plantshop.Services.Implementations
                 {
                     CartId = cart.CartId,
                     PlantId = plantId,
-                    Quantity = 1
+                    Quantity = quantity
                 };
                 _context.CartItems.Add(cartItem);
             }

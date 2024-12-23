@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Plantshop.Data;
 using Plantshop.Services.Interfaces;
 using PlantShop.Models;
+using System.Runtime.InteropServices;
 
 namespace Plantshop.Controllers
 {
@@ -35,8 +36,27 @@ namespace Plantshop.Controllers
             return View(cartItems);
         }
 
+        //Метод для відображення кількості товарів в кошику
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> GetCartItemsCount()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Json(new { success = true, isAuthenticated = false });
+            }
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                {
+                    return Json(new { success = false, message = "Користувача не знайдено", isAuthenticated = false });
+            }
+            var count = await _cartService.GetCartItemsCountAsync(user.Id);
+           
+            return Json(new { success = true, count, isAuthenticated = true });
+        }
+
         [HttpPost]
-        public async Task<IActionResult> AddToCart(int id)
+        public async Task<IActionResult> AddToCart(int id, int quantity)
         {
             try
             {
@@ -48,7 +68,7 @@ namespace Plantshop.Controllers
                 }
 
                 // Додаємо товар до кошика
-                await _cartService.AddToCartAsync(id, user.Id);
+                await _cartService.AddToCartAsync(id, user.Id, quantity);
 
                 // Отримуємо оновлену кількість товарів
                 var itemsCount = await _cartService.GetCartItemsCountAsync(user.Id);
@@ -63,7 +83,7 @@ namespace Plantshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> BuyNow(int id)
+        public async Task<IActionResult> BuyNow(int id, int quantity)
         {
             try
             {
@@ -75,7 +95,7 @@ namespace Plantshop.Controllers
 
                 // Очищаємо кошик і додаємо товар
                 await _cartService.ClearCartAsync(user.Id);
-                await _cartService.AddToCartAsync(id, user.Id);
+                await _cartService.AddToCartAsync(id, user.Id, quantity);
 
                 // Перенаправляємо на оформлення замовлення
                 return Json(new { success = true, redirectUrl = "/Checkout" });

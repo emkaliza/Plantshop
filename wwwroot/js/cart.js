@@ -1,8 +1,8 @@
-﻿function addToCart(plantId) {
+﻿function addToCart(plantId, quantity) {
     $.ajax({
         url: '/Cart/AddToCart',
         type: 'POST',
-        data: { id: plantId },
+        data: { id: plantId, quantity: quantity },
         success: function (response) {
             if (response.success) {
                 // Оновлюємо лічильник кошика
@@ -26,11 +26,11 @@
     });
 }
 
-function buyNow(plantId) {
+function buyNow(plantId, quantity) {
     $.ajax({
         url: '/Cart/BuyNow',
         type: 'POST',
-        data: { id: plantId },
+        data: { id: plantId, quantity: quantity },
         success: function (response) {
             if (response.success) {
                 // Перенаправляємо на сторінку оформлення замовлення
@@ -49,6 +49,29 @@ function buyNow(plantId) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    $.ajax({
+        url: '/Cart/GetCartItemsCount',
+        type: 'GET',
+
+        success: function (response) {
+            if (response.success) {
+                (response.isAuthenticated == false) ? updateCartCounter(0) : updateCartCounter(response.count); 
+            } else {
+                    showNotification(response.message, 'error');
+            }
+        },
+        error: function (xhr, status, error) {
+            // Якщо отримали 401, просто встановлюємо лічильник в 0
+            if (xhr.status === 401) {
+                updateCartCounter(0);
+            } else {
+                showNotification('Помилка при отриманні даних кошика', 'error');
+            }
+        }
+    })
+});
 
 function updateCartCounter(count) {
     const counter = document.querySelector('.cart-counter');
