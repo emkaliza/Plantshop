@@ -3,75 +3,6 @@
     ViewData["Title"] = "Кошик";
 }
 
-@* <div class="container my-4">
-    <h2 class="mb-4">Кошик</h2>
-
-    @if (!Model.Any())
-    {
-        <div class="alert alert-info">
-            Ваш кошик порожній. <a href="/Plants">Перейти до каталогу</a>
-        </div>
-    }
-    else
-    {
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Фото</th>
-                        <th>Назва</th>
-                        <th>Ціна</th>
-                        <th>Кількість</th>
-                        <th>Сума</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr id="cart-item-@item.CartItemId">
-                            <td>
-                                <img src="@item.Plant.ImageUrl" alt="@item.Plant.Name" style="max-width: 100px;" class="img-thumbnail" />
-                            </td>
-                            <td>@item.Plant.Name</td>
-                            <td>@item.Plant.CurrentPrice.ToString("C2")</td>
-                            <td>
-                                <div class="quantity-controls" style="width: 120px;">
-                                    <div class="input-group">
-                                        <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, -1)">-</button>
-                                        <input type="number" class="form-control text-center" value="@item.Quantity"
-                                               min="1" onchange="onQuantityChange(@item.CartItemId, this.value)">
-                                        <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, 1)">+</button>
-                                    </div>
-                                </div>
-
-                            </td>
-                            <td class="item-total">@((item.Plant.CurrentPrice * item.Quantity).ToString("C2"))</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm" onclick="removeFromCart(@item.CartItemId)">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-end"><strong>Загальна сума:</strong></td>
-                        <td id="cart-total">@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="d-flex justify-content-between mt-4">
-            <a href="/" class="btn btn-outline-primary">Продовжити покупки</a>
-            <a href="/Checkout" class="btn btn-success">Оформити замовлення</a>
-        </div>
-    }
-</div> *@
-
 <main class="flex-shrink-0 mb-5">
     <div class="my-4">
         <nav aria-label="breadcrumb">
@@ -115,19 +46,20 @@
                                         </a>
                                     </td>
                                     <td class="text-center">@item.Plant.Name</td>
-                                    <td class="text-center">@item.Plant.CurrentPrice.ToString("C2")</td>
                                     <td class="text-center">
-                                        @* <div class="quantity-controls" style="width: 120px;">
-                                            <div class="input-group">
-                                                <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, -1)">-</button>
-                                                <input type="number" class="form-control text-center" value="@item.Quantity"
-                                                       min="1" onchange="onQuantityChange(@item.CartItemId, this.value)">
-                                                <button class="btn btn-outline-secondary" onclick="updateQuantity(@item.CartItemId, 1)">+</button>
-                                            </div>
-                                        </div> *@
-                                        <p>@item.Quantity</p>
+                                    <span id="price-@item.CartItemId" data-price="@item.Plant.CurrentPrice">@item.Plant.CurrentPrice.ToString("C2")</span>
                                     </td>
-                                    <td class="item-total text-center">@((item.Plant.CurrentPrice * item.Quantity).ToString("C2"))</td>
+                                    <td class="">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <button type="button" class="btn btn-sm btn-green rounded-circle px-3" onclick="updateQuantity(@item.CartItemId, -1)">-</button>
+                                            <span id="quantity-display-@item.CartItemId" class="mx-3"  data-max-stock="@item.Plant.StockQuantity">@item.Quantity</span>
+                                            <input type="hidden" id="cart-item-@item.CartItemId" value="@item.Quantity" />
+                                            <button type="button" class="btn btn-sm btn-green rounded-circle px-3" onclick="updateQuantity(@item.CartItemId, 1)">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="item-total text-center">
+                                        <span id="item-total-@item.CartItemId">@((item.Plant.CurrentPrice * item.Quantity).ToString("C2"))</span>    
+                                    </td>
                                     <td text-center>
                                         <button class="btn btn-danger btn-sm" onclick="removeFromCart(@item.CartItemId)">
                                             <i class="bi bi-trash"></i>
@@ -136,13 +68,13 @@
                                 </tr>
                             }
                         </tbody>
-                        <tfoot>
+                        @* <tfoot>
                             <tr>
                                 <td colspan="4" class="text-end"><strong>Загальна сума:</strong></td>
                                 <td id="cart-total">@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</td>
                                 <td></td>
                             </tr>
-                        </tfoot>
+                        </tfoot> *@
                     </table>
                 </div>
             }
@@ -161,14 +93,14 @@
                 </div>
             </form>
             <dl class="row">
-                <dt class="col-6 text-start">Проміжний підсумок</dt>
-                <dd class="col-6 text-end"><strong><span>&#8372;</span>12345.00</strong></dd>
+                @* <dt class="col-6 text-start">Проміжний підсумок</dt>
+                <dd class="col-6 text-end" id="cart-total"><strong>@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</strong></dd> *@
                 <dt class="col-6 text-start">Купон Знижка</dt>
                 <dd class="col-6 text-end"><strong>(-) 0.00</strong></dd>
-                <dt class="col-6 text-start">Доставка</dt>
-                <dd class="col-6 text-end"><strong><span>&#8372;</span>15.00</strong></dd>
+                @* <dt class="col-6 text-start">Доставка</dt>
+                <dd class="col-6 text-end"><strong><span>&#8372;</span>15.00</strong></dd> *@
                 <dt class="col-6 text-start"><strong>Всього</strong></dt>
-                <dd class="col-6 text-end"><strong>&#8372;12360.00</strong></dd>
+                <dd class="col-6 text-end" id="cart-total"><b>@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</b></dd>
             </dl>
             <a href="/Checkout" class="btn btn-green w-100">Перейдіть до оформлення замовлення</a>
         </div>
@@ -178,32 +110,54 @@
 @section Scripts {
     <script>
         function updateQuantity(cartItemId, change) {
-            const input = document.querySelector(`#cart-item-${cartItemId} input[type="number"]`);
-            const newQuantity = parseInt(input.value) + change;
-            if (newQuantity < 1) return;
-
-            onQuantityChange(cartItemId, newQuantity);
+        const input = document.querySelector(`#cart-item-${cartItemId}`);
+        const display = document.querySelector(`#quantity-display-${cartItemId}`);
+        const currentQuantity = parseInt(display.textContent); /*parseInt(input.value);*/
+        const newQuantity = currentQuantity + change;
+        const maxQuantity = parseInt(display.dataset.maxStock);
+        
+        // Перевірка мінімальної кількості
+        if (newQuantity < 1) return;
+        if (maxQuantity && newQuantity > maxQuantity) {
+            alert(`Доступно тільки ${maxQuantity} одиниць`);
+            showNotification(`Доступно тільки ${maxQuantity} одиниць`, 'warning');
+            return;
         }
+        // Оновлюємо відображення одразу для кращого UX
+        input.value = newQuantity;
+        display.textContent = newQuantity;
+        
+        onQuantityChange(cartItemId, newQuantity);
+    }
 
-        function onQuantityChange(cartItemId, quantity) {
-            $.ajax({
-                url: '/Cart/UpdateQuantity',
-                type: 'POST',
-                data: { cartItemId, quantity },
-                success: function (response) {
-                    if (response.success) {
-                        // Оновлюємо відображення на сторінці
-                        updateCartDisplay(response);
-                        showNotification(response.message, 'success');
-                    } else {
-                        showNotification(response.message, 'error');
-                    }
-                },
-                error: function () {
-                    showNotification('Помилка при оновленні кількості', 'error');
+    function onQuantityChange(cartItemId, quantity) {
+        $.ajax({
+            url: '/Cart/UpdateQuantity',
+            type: 'POST',
+            data: { cartItemId, quantity },
+            success: function (response) {
+                if (response.success) {
+                    updateCartDisplay(response);
+                    showNotification(response.message, 'success');
+                } else {
+                    // Якщо помилка - повертаємо попереднє значення
+                    const input = document.querySelector(`#cart-item-${cartItemId}`);
+                    const display = document.querySelector(`#quantity-display-${cartItemId}`);
+                    input.value = quantity - 1; // Повертаємо попереднє значення
+                    display.textContent = quantity - 1;
+                    showNotification(response.message, 'error');
                 }
-            });
-        }
+            },
+            error: function () {
+                // При помилці також повертаємо попереднє значення
+                const input = document.querySelector(`#cart-item-${cartItemId}`);
+                const display = document.querySelector(`#quantity-display-${cartItemId}`);
+                input.value = quantity - 1;
+                display.textContent = quantity - 1;
+                showNotification('Помилка при оновленні кількості', 'error');
+            }
+        });
+    }
 
         function removeFromCart(cartItemId) {
             if (!confirm('Ви впевнені, що хочете видалити цей товар з кошика?')) return;
@@ -237,14 +191,26 @@
         }
 
         function updateCartDisplay(response) {
-            // Оновлюємо загальну суму
-            $('#cart-total').text(new Intl.NumberFormat('uk-UA', {
-                style: 'currency',
-                currency: 'UAH'
-            }).format(response.total));
 
-            // Оновлюємо лічильник кошика в хедері
-            $('.cart-counter').text(response.itemsCount);
+            // Оновлюємо загальну суму кошика
+                $('#cart-total').text(new Intl.NumberFormat('uk-UA', {
+                    style: 'currency',
+                    currency: 'UAH'
+                }).format(response.total));
+
+                // Оновлюємо лічильник кошика в хедері
+                $('.cart-counter').text(response.itemsCount);
+
+                // Оновлюємо суму конкретного товару
+                const price = parseFloat($(`#price-${response.cartItemId}`).data('price'));
+                const itemTotal = price * response.quantity;
+                $(`#item-total-${response.cartItemId}`).text(
+                    new Intl.NumberFormat('uk-UA', {
+                        style: 'currency',
+                        currency: 'UAH'
+                    }).format(itemTotal)
+                );
         }
+
     </script>
 }

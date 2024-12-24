@@ -3,44 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\User\\RiderProjects\\Plantshop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\viewmodels\\plantdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:viewmodels\\plantdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\home\\plantdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\home\\plantdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\services\\implementations\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:services\\implementations\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\services\\interfaces\\icartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:services\\interfaces\\icartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\plant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\plant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 20,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,98 +106,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Implementations\\OrderService.cs",
-              "RelativeDocumentMoniker": "Services\\Implementations\\OrderService.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Implementations\\OrderService.cs",
-              "RelativeToolTip": "Services\\Implementations\\OrderService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PlantDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\ViewModels\\PlantDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\PlantDetailsViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\ViewModels\\PlantDetailsViewModel.cs",
+              "RelativeToolTip": "ViewModels\\PlantDetailsViewModel.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA4wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:30:23.645Z",
+              "WhenOpened": "2024-12-24T02:12:23.566Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJEAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T01:33:42.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "CartService.cs",
               "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Implementations\\CartService.cs",
               "RelativeDocumentMoniker": "Services\\Implementations\\CartService.cs",
               "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Implementations\\CartService.cs",
               "RelativeToolTip": "Services\\Implementations\\CartService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowD4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:59:14.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ICartService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Interfaces\\ICartService.cs",
-              "RelativeDocumentMoniker": "Services\\Interfaces\\ICartService.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Services\\Interfaces\\ICartService.cs",
-              "RelativeToolTip": "Services\\Interfaces\\ICartService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:59:08.791Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\CartController.cs",
-              "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAowCgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:42:13.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:39:24.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-23T16:35:30.29Z",
+              "WhenOpened": "2024-12-23T23:49:14.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "cart.js",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\cart.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\cart.js",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\cart.js",
-              "RelativeToolTip": "wwwroot\\js\\cart.js",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAuwDUAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-23T16:32:37.071Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAACwAAAAAAAAAAAAEwEQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T15:35:32.678Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAUwJMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T23:15:01.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlantDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\PlantDetails.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
+              "RelativeToolTip": "Views\\Home\\PlantDetails.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAADgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T22:09:14.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Plant.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Plant.cs",
+              "RelativeDocumentMoniker": "Models\\Plant.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Plant.cs",
+              "RelativeToolTip": "Models\\Plant.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T22:07:33.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "CartItem.cs",
               "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\CartItem.cs",
               "RelativeDocumentMoniker": "Models\\CartItem.cs",
@@ -209,33 +205,20 @@
               "RelativeToolTip": "Models\\CartItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T15:41:46.128Z",
+              "WhenOpened": "2024-12-23T22:04:39.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlantDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\PlantDetails.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
-              "RelativeToolTip": "Views\\Home\\PlantDetails.cshtml",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAAMEAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-23T15:40:13.957Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Cart\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Cart\\Index.cshtml",
-              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-23T15:35:32.678Z",
+              "DocumentIndex": 5,
+              "Title": "cart.js",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\cart.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\cart.js",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\cart.js",
+              "RelativeToolTip": "wwwroot\\js\\cart.js",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwDsAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-23T16:32:37.071Z",
               "EditorCaption": ""
             }
           ]

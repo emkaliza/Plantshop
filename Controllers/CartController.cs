@@ -118,6 +118,49 @@ namespace Plantshop.Controllers
                     return Json(new { success = false, message = "Будь ласка, авторизуйтесь" });
                 }
 
+                // Перевірка мінімальної кількості
+                if (quantity < 1)
+                {
+                    return Json(new { success = false, message = "Кількість повинна бути більше 0" });
+                }
+
+                // Перевірка доступної кількості товару
+                /*var availableStock = await _cartService.GetAvailableStockAsync(cartItemId);
+                if (quantity > availableStock)
+                {
+                    return Json(new { success = false, message = $"Доступно тільки {availableStock} одиниць" });
+                }*/
+
+                await _cartService.UpdateCartItemQuantityAsync(cartItemId, quantity);
+                var cartTotal = await _cartService.GetCartTotalAsync(user.Id);
+                var itemsCount = await _cartService.GetCartItemsCountAsync(user.Id);
+
+                return Json(new
+                {
+                    success = true,
+                    total = cartTotal,
+                    itemsCount,
+                    cartItemId,
+                    quantity,
+                    message = "Кількість оновлено"
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        /*[HttpPost]
+        public async Task<IActionResult> UpdateQuantity(int cartItemId, int quantity)
+        {
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return Json(new { success = false, message = "Будь ласка, авторизуйтесь" });
+                }
+
                 if (quantity < 1)
                 {
                     return Json(new { success = false, message = "Кількість повинна бути більше 0" });
@@ -131,7 +174,7 @@ namespace Plantshop.Controllers
                 {
                     success = true,
                     total = cartTotal,
-                    itemsCount = itemsCount,
+                    itemsCount,
                     message = "Кількість оновлено"
                 });
             }
@@ -139,7 +182,7 @@ namespace Plantshop.Controllers
             {
                 return Json(new { success = false, message = ex.Message });
             }
-        }
+        }*/
 
         // Видалення товару з кошика
         [HttpPost]
@@ -161,7 +204,7 @@ namespace Plantshop.Controllers
                 {
                     success = true,
                     total = cartTotal,
-                    itemsCount = itemsCount,
+                    itemsCount,
                     message = "Товар видалено з кошика"
                 });
             }
