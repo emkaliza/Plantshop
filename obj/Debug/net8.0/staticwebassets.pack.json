@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\img\\mail.svg"
     },
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\nova-poshta.svg",
+      "PackagePath": "staticwebassets\\img\\nova-poshta.svg"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\payments.png",
       "PackagePath": "staticwebassets\\img\\payments.png"
     },
@@ -157,10 +161,6 @@
       "PackagePath": "staticwebassets\\img\\site-images\\plant1.svg"
     },
     {
-      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\site-images\\thank-you.svg",
-      "PackagePath": "staticwebassets\\img\\site-images\\thank-you.svg"
-    },
-    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_1.jpg",
       "PackagePath": "staticwebassets\\img\\slider_1.jpg"
     },
@@ -171,6 +171,14 @@
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\slider_3.jpg",
       "PackagePath": "staticwebassets\\img\\slider_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\thank-you.svg",
+      "PackagePath": "staticwebassets\\img\\thank-you.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\ukrposhta.svg",
+      "PackagePath": "staticwebassets\\img\\ukrposhta.svg"
     },
     {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\auth.js",

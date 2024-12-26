@@ -4,282 +4,152 @@
     ViewData["Title"] = "Оформлення замовлення";
 }
 
-@* <div class="container my-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Оформлення замовлення</h3>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm("PlaceOrder", "Checkout", FormMethod.Post, new { id = "checkoutForm", onsubmit = "return true;" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <input type="hidden" asp-for="CartItems" />
-                        <input type="hidden" asp-for="TotalAmount" />
-                        <div class="mb-3">
-                            <label asp-for="ShippingAddress" class="form-label"></label>
-                            <textarea asp-for="ShippingAddress" class="form-control" rows="3"></textarea>
-                            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="DeliveryMethod" class="form-label"></label>
-                            <select asp-for="DeliveryMethod" class="form-select">
-                                <option value="">Виберіть спосіб доставки</option>
-                                <option value="НоваПошта">Нова Пошта</option>
-                                <option value="УкрПошта">Укр Пошта</option>
-                                <option value="Самовивіз">Самовівіз</option>
-                            </select>
-                            <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="PaymentMethod" class="form-label"></label>
-                            <select asp-for="PaymentMethod" class="form-select">
-                                <option value="">Виберіть спосіб оплати</option>
-                                <option value="Картка">Оплата картою</option>
-                                <option value="Готівка">Оплата готівкою при отриманні</option>
-                            </select>
-                            <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" id="submitOrder">Підтвердити замовлення</button>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <!-- Order summary card remains the same -->
-            <div class="card">
-                <div class="card-header">
-                    <h4>Ваше замовлення</h4>
-                </div>
-                <div class="card-body">
-                    @foreach (var item in Model.CartItems)
-                    {
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <h6>@item.Plant.Name</h6>
-                                <small>Кількість: @item.Quantity</small>
-                            </div>
-                            <div>
-                                @((item.Plant.CurrentPrice * item.Quantity).ToString("C"))
-                            </div>
-                        </div>
-                    }
-                    <hr />
-                    <div class="d-flex justify-content-between">
-                        <h5>Загальна сума:</h5>
-                        <h5>@Model.TotalAmount.ToString("C")</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- *@
-
-
-
-<div class="container my-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Оформлення замовлення</h3>
-                </div>
-                <div class="card-body">
-                    <form asp-action="PlaceOrder" method="post">
-                        @Html.AntiForgeryToken()
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="CartItems" />
-                        <input type="hidden" asp-for="TotalAmount" />
-                        <div class="mb-3">
-                            <label asp-for="ShippingAddress" class="form-label"></label>
-                            <textarea asp-for="ShippingAddress" class="form-control" rows="3"></textarea>
-                            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="DeliveryMethod" class="form-label"></label>
-                            <select asp-for="DeliveryMethod" class="form-select">
-                                <option value="">Виберіть спосіб доставки</option>
-                                <option value="НоваПошта">Нова Пошта</option>
-                                <option value="УкрПошта">Укр Пошта</option>
-                                <option value="Самовивіз">Самовивіз</option>
-                            </select>
-                            <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="PaymentMethod" class="form-label"></label>
-                            <select asp-for="PaymentMethod" class="form-select">
-                                <option value="">Виберіть спосіб оплати</option>
-                                <option value="Картка">Оплата картою</option>
-                                <option value="Готівка">Оплата готівкою при отриманні</option>
-                            </select>
-                            <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Підтвердити замовлення</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Ваше замовлення</h4>
-                </div>
-                <div class="card-body">
-                    @foreach (var item in Model.CartItems)
-                    {
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <h6>@item.Plant.Name</h6>
-                                <small>Кількість: @item.Quantity</small>
-                            </div>
-                            <div>
-                                @((item.Plant.CurrentPrice * item.Quantity).ToString("C"))
-                            </div>
-                        </div>
-                    }
-                    <hr />
-                    <div class="d-flex justify-content-between">
-                        <h5>Загальна сума:</h5>
-                        <h5>@Model.TotalAmount.ToString("C")</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@* @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-} *@
-@* <div class="my-4">
+<div class="my-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/"><i class="bi bi-house-fill"></i></a></li>
             <li class="breadcrumb-item active"><a href="/">Головна</a></li>
-            <li class="breadcrumb-item" aria-current="page">Магазин</li>
+            <li class="breadcrumb-item"><a href="/Cart">Магазин</a></li>
             <li class="breadcrumb-item" aria-current="page">Оформлення замовлення</li>
         </ol>
     </nav>
 </div>
+
+<div class="container my-5">
 <div class="row">
     <div class="col-md-7 p-3">
-        <h5>Оформлення замовлення</h5>
-        <form>
+        <h4>Оформлення замовлення</h4>
             @using (Html.BeginForm("PlaceOrder", "Checkout", FormMethod.Post, new { id = "checkoutForm", onsubmit = "return true;" }))
             {
                 @Html.AntiForgeryToken()
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" asp-for="CartItems" />
                 <input type="hidden" asp-for="TotalAmount" />
-                <div class="mb-3">
-                    <label asp-for="ShippingAddress" class="form-label"></label>
-                    <textarea asp-for="ShippingAddress" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="ShippingAddress" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="DeliveryMethod" class="form-label"></label>
-                    <select asp-for="DeliveryMethod" class="form-select">
-                        <option value="">Виберіть спосіб доставки</option>
-                        <option value="НоваПошта">Нова Пошта</option>
-                        <option value="УкрПошта">Укр Пошта</option>
-                        <option value="Самовивіз">Самовівіз</option>
-                    </select>
-                    <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="PaymentMethod" class="form-label"></label>
-                    <select asp-for="PaymentMethod" class="form-select">
-                        <option value="">Виберіть спосіб оплати</option>
-                        <option value="Картка">Оплата картою</option>
-                        <option value="Готівка">Оплата готівкою при отриманні</option>
-                    </select>
-                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-                </div>
-
-                <button type="submit" class="btn btn-primary" id="submitOrder">Підтвердити замовлення</button>
-            }
-            @* <div class="row g-3">
-                <!-- First Name & Last Name -->
+                <div class="row g-3">
+                    
                 <div class="col-md-6">
                     <label class="form-label required">Ім'я<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" required>
+                        <input type="text" id="firstName" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label required">Прізвище<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" id="lastName" class="form-control" required>
                 </div>
-
-                <!-- Country & City -->
-                <div class="col-md-6">
-                    <label class="form-label required">Область<span class="text-danger ms-1">*</span></label>
-                    <select class="form-select" required>
-                        <option value="">Обрати область</option>
-                        <option value="us">Київська область</option>
-                        <option value="uk">Донецька область</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label required">Місто<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" required>
-                </div>
-
-                <!-- Street Address -->
-                <div class="col-md-6">
-                    <label class="form-label required">Вулиця<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" placeholder="Номер будинку та назва вулиці" required>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Квартира (опційно)<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" placeholder="Квартира, люкс, блок тощо.">
-                </div>
-
-                <!-- State & ZIP -->
-                <div class="col-md-6">
-                    <label class="form-label required">Район<span class="text-danger ms-1">*</span></label>
-                    <select class="form-select" required>
-                        <option value="">Обрати район</option>
-                        <option value="ny">New York</option>
-                        <option value="ca">California</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label required">Поштовий індекс<span class="text-danger ms-1">*</span></label>
-                    <input type="text" class="form-control" required>
-                </div>
-
-                <!-- Email & Phone -->
                 <div class="col-md-6">
                     <label class="form-label required">Email<span class="text-danger ms-1">*</span></label>
-                    <input type="email" class="form-control" required>
+                    <input type="email" id="email" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label required">Телефон<span class="text-danger ms-1">*</span></label>
-                    <input type="tel" class="form-control" required>
+                    <input type="tel" id="phone" class="form-control" required>
                 </div>
+                <h5>Адреса доставки</h5>
+                <div class="col-md-6">
+                    <label class="form-label required">Область</label>
+                    <select id="region" class="form-select">
+                        <option value="">Обрати область</option>
+                        <option value="Київська область">Київська область</option>
+                        <option value="Харківська область">Харківська область</option>
+                        <option value="Львівська область">Львівська область</option>
+                        <option value="Полтавська область">Полтавська область</option>
+                        <option value="Хмельницька область">Хмельницька область</option>
+                        <option value="Донецька область">Донецька область</option>
+                        <option value="Черкаська область">Черкаська область</option>
+                        <option value="Сумська область">Сумська область</option>
+                        <option value="Чернигівська область">Чернигівська область</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label required">Місто</label>
+                    <input type="text" id="city" class="form-control">
+                </div>
+                <div class="col-md-6">
+                     <label class="form-label required">Район</label>
+                     <input type="text" id="area" class="form-control"  />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label required">Поштовий індекс</label>
+                    <input type="text" id="postIndex" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label required">Вулиця</label>
+                    <input type="text" id="street" class="form-control" placeholder="Назва вулиці">
+                </div>
+                <div class="col-md-6">
+                     <label class="form-label required">Номер будинку</label>
+                     <input type="text" id="house" class="form-control" placeholder="Номер будинку">
+                </div>
+                <div class="col-md-6 mx-auto">
+                    <label class="form-label">Квартира (опційно)</label>
+                    <input type="text" id="apartment" class="form-control" placeholder="Квартира, люкс, блок тощо.">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label required" for="postoffice">Відділення</label>
+                    <textarea class="form-control" rows="3" id="postOffice" placeholder="Адреса відділення Укрпошти чи Нової пошти"></textarea>
+                </div> 
+                    <input id="shippingAddress" asp-for="ShippingAddress" type="hidden" rows="3" />
+                <div class="container">
+                        <div class="row gap-3 mt-5 mx-auto">
+                            <h5>Спосіб доставки</h5>
+
+                            <!-- Нова Пошта -->
+                            <div class="col-md-3 border rounded p-3 my-3">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="nova-poshta" name="DeliveryMethod" value="НоваПошта">
+                                    <label for="nova-poshta" class="form-check-label ms-3">
+                                        <img src="~/img/nova-poshta.svg" alt="NovaPoshta" height="30">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- УкрПошта -->
+                            <div class="col-md-4 border rounded p-3 my-3">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="ukr-poshta" name="DeliveryMethod" value="УкрПошта">
+                                    <label for="ukr-poshta" class="form-check-label ms-3">
+                                        <img src="~/img/ukrposhta.svg" alt="UkrPoshta" height="30">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Самовивіз -->
+                            <div class="col-md-3 border rounded p-3 my-3">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="self-pickup" name="DeliveryMethod" value="Самовивіз">
+                                    <label for="self-pickup" class="form-check-label ms-3">
+                                        <i class="bi bi-truck"></i> Самовивіз
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gap-3 mt-5 mx-auto">
+                            <h5>Спосіб оплати</h5>
+
+                            <!-- Картка -->
+                            <div class="col-md-5 border rounded p-3 my-3">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="card-payment" name="PaymentMethod" value="Картка">
+                                    <label for="card-payment" class="form-check-label ms-3">
+                                        <img src="~/img/payments.png" height="30" alt="Картка">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Готівка -->
+                            <div class="col-md-5 border rounded p-3 my-3">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="cash-payment" name="PaymentMethod" value="Готівка">
+                                    <label for="cash-payment" class="form-check-label ms-3">
+                                        Накладений платіж
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                    <button type="submit" class="btn btn-green col-6 p-2 mt-5 mx-auto" id="submitOrder">Підтвердити замовлення</button>
             </div>
-            <div class="form-floating mt-4">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Примітки до замовлення (необов'язково)</label>
-            </div>
-            <div class="col-12 mt-3">
-                <button type="submit" class="btn btn-green px-4">Зберегти зміни</button>
-            </div> 
-        </form>
+            }
     </div>
     <div class="col-md-5 offset-md-0 px-5 py-3">
         <h5>Ваше замовлення.</h5>
@@ -288,168 +158,43 @@
                 <tr class="border-bottom-green">
                     <th scope="col"><b>Продукти</b></th>
                     <th scope="col"></th>
-                    <th scope="col"></th>
                     <th scope="col"><b>Підсумок</b></th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
-                <tr class="align-baseline">
-                    <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                    <td>Product</td>
-                    <td>(x2)</td>
-                    <td>&#8372;123.00</td>
-                </tr>
-                <tr class="align-baseline">
-                    <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                    <td>Product</td>
-                    <td>(x5)</td>
-                    <td>&#8372;756.00</td>
-                </tr>
-                <tr class="align-baseline">
-                    <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                    <td>Product</td>
-                    <td>(x9)</td>
-                    <td>&#8372;2546.00</td>
-                </tr>
+            <tbody class="table-group-divider border-bottom-green">
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr class="align-baseline">
+                        <td>@item.Plant.Name</td>
+                        <td>(x @item.Quantity)</td>
+                        <td>@((item.Plant.CurrentPrice * item.Quantity).ToString("C"))</td>
+                    </tr>
+                }   
             </tbody>
         </table>
-        <p class="text-end">
-            Маєте код купона? <a href="./product_cart.html" class="text-decoration-none green">
-                Натисніть
-                тут
-            </a>
-        </p>
-        <div class="col-md-10 offset-md-2 text-end">
-            <dl class="row border-bottom-green pb-2">
+        
+        <div class="col-md-11 offset-md-2 text-end mx-auto">
+            <p class="text-end">
+                Маєте код купона? <a asp-controller="Cart" asp-action="Index" class="text-decoration-none green">
+                    Натисніть
+                    тут
+                </a>
+            </p>
+            <dl class="row pb-2">
                 <dt class="col-6 text-start">Проміжний підсумок</dt>
-                <dd class="col-6 text-end"><strong><span>&#8372;</span>12345.00</strong></dd>
+                <dd class="col-6 text-end"><strong>@Model.TotalAmount.ToString("C")</strong></dd>
                 <dt class="col-6 text-start">Купон Знижка</dt>
                 <dd class="col-6 text-end"><strong>(-) 0.00</strong></dd>
-                <dt class="col-6 text-start">Доставка</dt>
-                <dd class="col-6 text-end"><strong><span>&#8372;</span>15.00</strong></dd>
             </dl>
-            <dl class="row">
+            <dl class="row green-light p-4">
                 <dt class="col-6 text-start"><strong>Всього</strong></dt>
-                <dd class="col-6 text-end green"><strong>&#8372;12360.00</strong></dd>
+                <dd class="col-6 text-end green"><strong>@Model.TotalAmount.ToString("C")</strong></dd>
             </dl>
-            <div class="mt-3 text-start">
-                <h5 class="">Спосіб оплати</h5>
-                <form>
-                    <div class="border rounded p-3 my-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="html" name="fav_language"
-                                   value="HTML">
-                            <label class="form-check-label" for="html" class="">
-                                <img src="~/img/payments.png" height="30" alt="">
-                            </label><br>
-                        </div>
-                    </div>
-
-                    <div class="border rounded p-3 my-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="css" name="fav_language"
-                                   value="CSS">
-                            <label class="form-check-label" for="css" class="">Онлайн оплата</label><br>
-                        </div>
-                    </div>
-                    <div class="border rounded p-3 my-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="javascript" name="fav_language"
-                                   value="JavaScript">
-                            <label class="form-check-label" for="javascript" class="ms-3">
-                                Накладений
-                                платіж
-                            </label><br>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-green col-12 p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Оформити замовлення</button>
-                </form>
-            </div>
+           
         </div>
     </div>
-</div> *@
-<!-- Button trigger modal -->
-<!--        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>-->
-<!-- Modal -->
-<!--        <div class="modal-dialog">-->
-@* <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header green-light border-bottom-green">
-                <div class="mx-lg-auto mt-3 ps-5">
-                    <h1 class="visually-hidden" id="exampleModalLabel">Modal title</h1>
-                    <img src="./img/thank-you.svg" alt="Thank you" class="mx-auto d-block">
-                    <p>Ваше замовлення отримано</p>
-                </div>
-                <button type="button" class="btn-close mb-auto ms-5" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body border-bottom-green">
-                <dl class="d-flex justify-content-around align-items-center pb-2 border-bottom-green">
-                    <div class="text-center">
-                        <dt><small>Номер замовлення</small></dt>
-                        <dd class="f-size">19586687</dd>
-                    </div>
-                    <div class="text-center">
-                        <dt><small>Дата</small></dt>
-                        <dd class="f-size">15 вересня, 2021</dd>
-                    </div>
-                    <div class="text-center">
-                        <dt><small>Всього</small></dt>
-                        <dd class="f-size">2,699.00</dd>
-                    </div>
-                    <div class="text-center">
-                        <dt><small>Спосіб оплати</small></dt>
-                        <dd class="f-size">Накладений платіж</dd>
-                    </div>
-                </dl>
-                <h5><b>Деталі замовлення</b></h5>
-                <table class="table table-borderless">
-                    <thead>
-                        <tr class="border-bottom-green">
-                            <th scope="col"><b>Продукти</b></th>
-                            <th scope="col"></th>
-                            <th scope="col"><b>Кількість</b></th>
-                            <th scope="col"><b>Підсумок</b></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr class="align-baseline">
-                            <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                            <td>Product</td>
-                            <td>(x2)</td>
-                            <td>&#8372;123.00</td>
-                        </tr>
-                        <tr class="align-baseline">
-                            <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                            <td>Product</td>
-                            <td>(x5)</td>
-                            <td>&#8372;756.00</td>
-                        </tr>
-                        <tr class="align-baseline">
-                            <td><img src="./img/plants/04.jpeg" width="50" height="50" alt=""></td>
-                            <td>Product</td>
-                            <td>(x9)</td>
-                            <td>&#8372;2546.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <dl class="row">
-                    <dt class="col-8 text-center">Доставка</dt>
-                    <dd class="col-3 text-center"><strong>&#8372;15.00</strong></dd>
-                    <dt class="col-8 text-center"><strong>Всього</strong></dt>
-                    <dd class="col-3 text-center green"><strong>&#8372;12360.00</strong></dd>
-                </dl>
-            </div>
-            <div class="modal-footer border-bottom-green-1 green-light">
-                <p class="text-center"><small>Ваше замовлення зараз обробляється. Незабаром ви отримаєте лист із підтвердженням замовлення та очікуваною датою доставки ваших товарів.</small></p>
-                <button type="button" class="btn btn-green mx-auto my-5 py-2 px-4">Відстежуйте своє замовлення</button>
-            </div>
-        </div>
-    </div>
-</div> *@
+</div>
+</div>
 
 @section Scripts {
     @{
@@ -465,6 +210,34 @@
                 console.log("Form submitted");
                 $("#submitOrder").prop('disabled', true);
                 return true;
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const region = document.getElementById('region');
+            const city = document.getElementById('city');
+            const area = document.getElementById('area');
+            const postIndex = document.getElementById('postIndex');
+            const street = document.getElementById('street');
+            const house = document.getElementById('house');
+            const apartment = document.getElementById('apartment');
+            const postOffice = document.getElementById('postOffice');
+            const shippingAddress = document.getElementById('shippingAddress');
+
+            const updateShippingAddress = () => {
+                shippingAddress.value =
+                    `${firstName.value} ${lastName.value}, ${email.value}, ${phone.value} ${region.value}, ${city.value}, ${area.value}, ${postIndex.value} ${street.value} ${house.value} ` +
+                    (apartment.value ? `, Apt: ${apartment.value}` : '' + ` ${postOffice.value}`);
+            };
+
+            // Додати обробники на зміну даних
+            [firstName, lastName, email, phone, region, city, area, postIndex, street, house, apartment, postOffice].forEach(field => {
+                field.addEventListener('input', updateShippingAddress);
             });
         });
     </script>
