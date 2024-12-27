@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IGq5+0/lh/wAJkHCJ9vPr0sxiqP52uv04OOik5/T2Vk=",
+  "Hash": "vVXN7GjRl5v9ZRQ6xmhrTb2nGMD0Y6z3pUEAFvM9IVg=",
   "Source": "Plantshop",
   "BasePath": "_content/Plantshop",
   "Mode": "Default",
@@ -1402,6 +1402,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\google.svg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\heart.svg",
+      "SourceId": "Plantshop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\",
+      "BasePath": "_content/Plantshop",
+      "RelativePath": "img/heart.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\heart.svg"
     },
     {
       "Identity": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\kettle.svg",

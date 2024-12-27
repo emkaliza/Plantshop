@@ -102,40 +102,12 @@
                         </button>
                     }
 
-                    @* <button class="wishlist-btn"
-                            data-plant-id="@Model.PlantId"
-                            onclick="toggleWishlist(this, @Model.PlantId)">
-                        <i class="bi bi-heart@(ViewBag.IsInWishlist ? "-fill" : "")"></i>
-                    </button> *@
-
-                    @* <button class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
-                            onclick="toggleWishlist(@Model.PlantId)">
-                        <i class="bi bi-heart"></i>
-                        @(Model.IsInWishlist ? "Видалити з бажаного" : "Додати до бажаного")
-                    </button> *@
-
-                    @* <form asp-controller="Wishlist" asp-action="AddToWishlist" method="post">
-                        <input type="hidden" name="plantId" value="@Model.PlantId" />
-                        <button type="submit" class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
-                                onclick="toggleWishlist(@Model.PlantId)">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </form> *@
-
-                </div>
                 @* <a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
                 <partial name="_WishlistButton" model="@Model.PlantId" />
             </div>
         </div>
     </div>
     <div class="col-12 mt-3 py-3">
-        @* <div class="border-bottom">
-            <ul class="nav nav-underline text-secondary">
-                <li class="nav-item"><a href="#" class="nav-link active">Опис продукту</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Відгуки (19)</a></li>
-            </ul>
-        </div> *@
-
         <input type="hidden" id="PlantId" value="@Model.PlantId" />
 
         <div class="product-tabs">
@@ -157,27 +129,6 @@
                 </div>
             </div>
         </div>
-
-       @*  <div class="product-tabs">
-            <div class="tabs-buttons">
-                <button class="tab-button active" data-tab="description">Опис продукту</button>
-                <button class="tab-button" data-tab="loadReviews">
-                    Відгуки (@Model.Reviews.Count)
-                </button>
-            </div>
-
-            <div class="tab-content">
-                <div id="description" class="tab-pane active">
-                    @Model.Description
-                </div>
-                <div id="reviews" class="tab-pane">
-                    <!-- Відгуки завантажуться сюди через AJAX -->
-                </div>
-            </div>
-        </div> *@
-
-        @* <p></p>
-            @Model.Description *@
     </div>
     @if(Model.RelatedPlants.Count() != 0)
     {
@@ -225,25 +176,6 @@
                         </div>
                     </div>
                 }
-            @* <div class="carousel-item active">
-                <div class="row gap-2 py-3 h-100">
-                    @foreach(var plant in Model.RelatedPlants)
-                    {
-                        <div class="col">
-                            <div class="card border-0 w-25 h-100">
-                                <a asp-action="PlantDetails" asp-route-id="@plant.PlantId">
-                                    <img src="~/@plant.ImageUrl" class="card-img-top" alt="...">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><strong>@plant.Name</strong></h5>
-                                    <p class="card-text green"><strong>&#8372;@plant.BasePrice</strong></p>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    }
-                </div> 
-            </div> *@
         </div>
         @if (Model.RelatedPlants.Count() > 1)
         {
@@ -288,59 +220,5 @@
                     }
                 });
             });
-
-            // function loadReviews(plantId) {
-            //     $.get(`/Review/GetReviews?plantId=${plantId}`, function (data) {
-            //         $('#reviews').html(data);
-            //     });
-            // }
-
-            // $(document).ready(function () {
-            //     Обробка відправки форми відгуку
-            //     $('#reviewForm').on('submit', function (e) {
-            //         e.preventDefault();
-
-            //         $.ajax({
-            //             url: '/Review/AddReview',
-            //             type: 'POST',
-            //             data: $(this).serialize(),
-            //             success: function () {
-            //                 loadReviews($('#plantId').val());
-            //                 Очищаємо форму
-            //                 $('#reviewForm')[0].reset();
-            //                 toastr.success('Відгук додано успішно');
-            //             },
-            //             error: function () {
-            //                 toastr.error('Помилка при додаванні відгуку');
-            //             }
-            //         });
-            //     });
-
-            //     Завантажуємо відгуки при кліку на таб
-            //     $('.tab-button[data-tab="reviews"]').click(function () {
-            //         loadReviews($('#plantId').val());
-            //     });
-            // });
-
-            // function toggleWishlist(plantId) {
-            //     const isInWishlist = document.querySelector('.wishlist-btn').classList.contains('active');
-            //     const url = isInWishlist ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
-
-            //     fetch(url, {
-            //         method: 'POST',
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         body: JSON.stringify({ plantId: plantId })
-            //     })
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         if (data.success) {
-            //             const btn = document.querySelector('.wishlist-btn');
-            //             btn.classList.toggle('active');
-            //             btn.textContent = isInWishlist ? 'Додати до бажаного' : 'Видалити з бажаного';
-            //         }
-            //     });
-            // }
     </script>
 }

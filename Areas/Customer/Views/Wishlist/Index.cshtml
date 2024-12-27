@@ -39,7 +39,7 @@ else
                 <button class="wishlist-btn" 
                         data-plant-id="@plant.PlantId"
                         onclick="toggleWishlist(this, @plant.PlantId)">
-                    <i class="fas fa-heart"></i>
+                    <i class="bi bi-heart"></i>
                 </button>
                 <a href="@Url.Action("PlantDetails", "Home", new { id = plant.PlantId })" 
                    class="btn btn-primary">

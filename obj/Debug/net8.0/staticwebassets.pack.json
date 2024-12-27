@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\img\\google.svg"
     },
     {
+      "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\heart.svg",
+      "PackagePath": "staticwebassets\\img\\heart.svg"
+    },
+    {
       "Id": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\img\\kettle.svg",
       "PackagePath": "staticwebassets\\img\\kettle.svg"
     },

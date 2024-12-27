@@ -483,12 +483,17 @@ footer .nav-link {
 }
 
     .wishlist-button:hover {
-        transform: scale(1.1);
+        /*transform: scale(1.1);*/
+        background-color: #46A358;
+        color: white;
     }
 
     .wishlist-button i {
-        font-size: 1.5rem;
-        color: #ff4d4d;
+        color: #46A358;
+    }
+
+    .wishlist-button i:hover {
+        color: white;
     }
 
     .wishlist-button.active i {
@@ -508,45 +513,6 @@ footer .nav-link {
         transform: scale(1);
     }
 }
-
-/*.wishlist-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-}
-
-    .wishlist-btn i {
-        font-size: 1.2rem;
-        color: #ff4d4d;
-    }
-
-.far.fa-heart {
-    opacity: 0.5;
-}
-
-.fas.fa-heart {
-    opacity: 1;
-}
-
-.wishlist-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.wishlist-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.wishlist-item img {
-    max-width: 100%;
-    height: auto;
-}*/
 
     /* Reviews styles */
 .rating-input {
@@ -675,7 +641,7 @@ footer .nav-link {
 
 .review-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -701,6 +667,7 @@ footer .nav-link {
 .review-content {
     color: #333;
     line-height: 1.6;
+    text-align: center
 }
 
 /* Адаптивність */

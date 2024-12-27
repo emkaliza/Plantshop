@@ -97,8 +97,6 @@
                 <dd class="col-6 text-end" id="cart-total"><strong>@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</strong></dd> *@
                 <dt class="col-6 text-start">Купон Знижка</dt>
                 <dd class="col-6 text-end"><strong>(-) 0.00</strong></dd>
-                @* <dt class="col-6 text-start">Доставка</dt>
-                <dd class="col-6 text-end"><strong><span>&#8372;</span>15.00</strong></dd> *@
                 <dt class="col-6 text-start"><strong>Всього</strong></dt>
                 <dd class="col-6 text-end" id="cart-total"><b>@Model.Sum(i => i.Plant.CurrentPrice * i.Quantity).ToString("C2")</b></dd>
             </dl>

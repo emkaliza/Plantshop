@@ -122,7 +122,7 @@ document.addEventListener('click', function (e) {
         .catch(error => console.error('Error:', error));
 }*/
 
-function toggleWishlist(button, plantId) {
+/*function toggleWishlist(button, plantId) {
     const isActive = button.classList.contains('active');
     const url = isActive ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
 
@@ -156,7 +156,7 @@ function toggleWishlist(button, plantId) {
             console.error('Error:', error);
             alert('Помилка при оновленні списку бажань');
         });
-}
+}*/
 
 /*function toggleWishlist(button, plantId) {
     const isActive = button.classList.contains('active');
@@ -192,6 +192,53 @@ function toggleWishlist(button, plantId) {
         });
 }
 */
+
+function toggleWishlist(button, plantId) {
+    const isActive = button.classList.contains('active');
+    const url = isActive ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+    // Отримуємо антифоргері токен
+    //const tokenElement = $('input[name="__RequestVerificationToken"]');
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: { plantId: plantId },
+        /*headers: {
+            'RequestVerificationToken': tokenElement.length ? tokenElement.val() : ''
+        },*/
+        success: function (response) {
+            if (response.success) {
+                // Перемикаємо клас active на кнопці
+                $(button).toggleClass('active');
+
+                // Оновлюємо іконку
+                const icon = $(button).find('i');
+                icon.toggleClass('')
+                    .toggleClass('-fill');
+
+                // Показуємо повідомлення про успіх
+                if (typeof showNotification === 'function') {
+                    showNotification('Список бажань оновлено', 'success');
+                }
+            } else {
+                // Показуємо повідомлення про помилку
+                if (typeof showNotification === 'function') {
+                    showNotification(response.message || 'Помилка при оновленні списку бажань', 'error');
+                }
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+            if (typeof showNotification === 'function') {
+                showNotification('Помилка при оновленні списку бажань', 'error');
+            } else {
+                alert('Помилка при оновленні списку бажань');
+            }
+        }
+    });
+}
+
 $(document).ready(function () {
     // Функція для перемикання табів
     function switchTab(tabId) {
