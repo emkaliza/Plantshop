@@ -86,5 +86,14 @@ namespace PlantShop.Models
                 return BasePrice.Value;
             }
         }
+
+        [NotMapped]
+        public double AverageRating =>
+        Reviews != null && Reviews.Any()
+            ? Math.Round(Reviews.Average(r => r.Rating ?? 0), 1)
+            : 0;
+
+        [NotMapped]
+        public int ReviewsCount => Reviews?.Count ?? 0;
     }
 }

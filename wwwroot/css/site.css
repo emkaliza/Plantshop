@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
@@ -471,3 +471,291 @@ footer .nav-link {
     .notification.error {
         background-color: #f44336;
     }
+
+    /* Wishlist styles */
+
+.wishlist-button {
+    border: none;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+    .wishlist-button:hover {
+        transform: scale(1.1);
+    }
+
+    .wishlist-button i {
+        font-size: 1.5rem;
+        color: #ff4d4d;
+    }
+
+    .wishlist-button.active i {
+        animation: pulse 0.3s ease-in-out;
+    }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*.wishlist-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+    .wishlist-btn i {
+        font-size: 1.2rem;
+        color: #ff4d4d;
+    }
+
+.far.fa-heart {
+    opacity: 0.5;
+}
+
+.fas.fa-heart {
+    opacity: 1;
+}
+
+.wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.wishlist-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.wishlist-item img {
+    max-width: 100%;
+    height: auto;
+}*/
+
+    /* Reviews styles */
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating-input input {
+    display: none;
+}
+
+.rating-input label {
+    cursor: pointer;
+    font-size: 25px;
+    color: #ddd;
+    padding: 0 2px;
+}
+
+.rating-input label:hover,
+.rating-input label:hover ~ label,
+.rating-input input:checked ~ label {
+    color: #ffd700;
+}
+
+.star {
+    color: #ddd;
+    font-size: 20px;
+}
+
+    .star.filled {
+        color: #ffd700;
+    }
+
+.review-item {
+    background-color: #f8f9fa;
+}
+
+.review-date {
+    font-size: 0.9em;
+}
+
+/* Стилі для табів */
+.product-tabs {
+    margin: 20px 0;
+}
+
+.tabs-buttons {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    color: #666;
+}
+
+    .tab-button:hover {
+        color: #4CAF50;
+    }
+
+    .tab-button.active {
+        color: #4CAF50;
+    }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4CAF50;
+        }
+
+.tab-pane {
+    display: none;
+    padding: 20px 0;
+}
+
+    .tab-pane.active {
+        display: block;
+    }
+/* Стилі для форми відгуків */
+.review-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.rating-input {
+    direction: rtl;
+    display: inline-block;
+}
+
+    .rating-input input {
+        display: none;
+    }
+
+    .rating-input label {
+        cursor: pointer;
+        font-size: 30px;
+        color: #ddd;
+        padding: 0 2px;
+    }
+
+        .rating-input label:hover,
+        .rating-input label:hover ~ label,
+        .rating-input input:checked ~ label {
+            color: #ffd700;
+        }
+
+/* Стилі для списку відгуків */
+.review-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.star {
+    color: #ddd;
+    font-size: 18px;
+}
+
+    .star.filled {
+        color: #ffd700;
+    }
+
+.review-date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.review-content {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .review-header > * {
+            margin-bottom: 5px;
+        }
+}
+
+/* plants rating */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.rating-stars {
+    display: inline-flex;
+}
+
+.star {
+    font-size: 20px;
+    color: #ddd;
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.star.half-filled {
+    position: relative;
+    color: #ddd;
+}
+
+.star.half-filled::before {
+    content: '★';
+    position: absolute;
+    color: #ffd700;
+    width: 50%;
+    overflow: hidden;
+}
+
+.rating-value {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.reviews-count {
+    color: #666;
+    font-size: 16px;
+}

@@ -1,0 +1,55 @@
+﻿@using PlantShop.Models
+@* @model IEnumerable<Plant>
+
+<h2>Мій список бажань</h2>
+
+@if (!Model.Any())
+{
+    <p>Ваш список бажань порожній.</p>
+}
+else
+{
+    <div class="wishlist-items">
+        @foreach (var plant in Model)
+        {
+            <div class="wishlist-item">
+                <h3>@plant.Name</h3>
+                <img src="@plant.ImageUrl" alt="@plant.Name" height="100" />
+                <p>Ціна: @plant.CurrentPrice грн</p>
+                <form asp-action="RemoveFromWishlist" method="post">
+                    <input type="hidden" name="plantId" value="@plant.PlantId" />
+                    <button type="submit" class="btn btn-danger">Видалити</button>
+                </form>
+            </div>
+        }
+    </div>
+} *@
+
+@model IEnumerable<Plant>
+
+<div class="wishlist-container">
+    @if (Model.Any())
+    {
+        foreach (var plant in Model)
+        {
+            <div class="wishlist-item">
+                <img src="@plant.ImageUrl" alt="@plant.Name" />
+                <h3>@plant.Name</h3>
+                <p>@plant.CurrentPrice грн</p>
+                <button class="wishlist-btn" 
+                        data-plant-id="@plant.PlantId"
+                        onclick="toggleWishlist(this, @plant.PlantId)">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <a href="@Url.Action("PlantDetails", "Home", new { id = plant.PlantId })" 
+                   class="btn btn-primary">
+                    Детальніше
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Ваш список бажань порожній</p>
+    }
+</div>

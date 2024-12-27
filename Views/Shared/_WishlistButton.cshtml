@@ -1,0 +1,25 @@
+﻿@model int
+@{
+    var isInWishlist = ViewBag.WishlistItems != null && ViewBag.WishlistItems.Contains(Model);
+}
+
+<button class="wishlist-button @(isInWishlist ? "active" : "")"
+        data-plant-id="@Model"
+        onclick="toggleWishlist(this, @Model)">
+    <i class="bi bi-heart@(isInWishlist ? "-fill" : "")"></i>
+</button>
+
+@* @model int
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@{
+    var isInWishlist = ViewBag.WishlistItems != null && ViewBag.WishlistItems.Contains(Model);
+    var token = Xsrf.GetAndStoreTokens(Context).RequestToken;
+}
+
+<input type="hidden" name="__RequestVerificationToken" value="@token" />
+<button class="wishlist-button @(isInWishlist ? "active" : "")"
+        data-plant-id="@Model"
+        onclick="toggleWishlist(this, @Model)">
+    <i class="bi bi-heart@(isInWishlist ? "-fill" : "")"></i>
+</button>
+ *@

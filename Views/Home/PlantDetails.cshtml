@@ -22,25 +22,42 @@
     </div>
     <div class="col-8">
         <h3 class="mb-3">@Model.Name</h3>
-        <div class="d-flex justify-content-between border-bottom my-3">
+        <div class="d-flex justify-content-between align-items-baseline border-bottom my-3">
             @if (Model.IsOnSale)
             {
-                <h5 class="current-price">&#8372;@Model.DiscountPrice</h5>
-                <span class="old-price ms-2"><h5>&#8372;@Model.BasePrice</h5></span>
+                <h5 class="current-price">&#8372;@Model.DiscountPrice
+                    <span class="old-price fw-bold ms-2">&#8372;@Model.BasePrice</span>
+                </h5>
             }
             else
             {
                 <h5 class="green">&#8372; @Model.CurrentPrice</h5>
             }
-            
-            <ul class="list-inline text-end">
-                <li class="list-inline-item"><p><i class="bi bi-star-fill text-warning"></i></p></li>
-                <li class="list-inline-item"><p><i class="bi bi-star-fill text-warning"></i></p></li>
-                <li class="list-inline-item"><p><i class="bi bi-star-fill text-warning"></i></p></li>
-                <li class="list-inline-item"><p><i class="bi bi-star"></i></p></li>
-                <li class="list-inline-item"><p><i class="bi bi-star"></i></p></li>
-                <li class="list-inline-item"><p>19 Відгуків клієнтів</p></li>
-            </ul>
+
+            <div class="product-rating">
+                <div class="rating-stars">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        if (i <= Math.Floor(Model.AverageRating))
+                        {
+                            <span class="star filled">★</span>
+                        }
+                        else if (i - Model.AverageRating <= 0.5 && i - Model.AverageRating > 0)
+                        {
+                            <span class="star half-filled">★</span>
+                        }
+                        else
+                        {
+                            <span class="star">★</span>
+                        }
+                    }
+                </div>
+                <div class="rating-info">
+                    <span class="rating-value">@Model.AverageRating.ToString("F1")</span>
+                    <span class="reviews-count">(@((Model.ReviewsCount == 1) ? "1 відгук" : Model.ReviewsCount + " відгуків"))</span>
+                </div>
+            </div>
+
         </div>
         <div>
             <p><b>Описание:</b></p>
@@ -85,26 +102,82 @@
                         </button>
                     }
 
-                    <button class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
+                    @* <button class="wishlist-btn"
+                            data-plant-id="@Model.PlantId"
+                            onclick="toggleWishlist(this, @Model.PlantId)">
+                        <i class="bi bi-heart@(ViewBag.IsInWishlist ? "-fill" : "")"></i>
+                    </button> *@
+
+                    @* <button class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
                             onclick="toggleWishlist(@Model.PlantId)">
                         <i class="bi bi-heart"></i>
-                       @*  @(Model.IsInWishlist ? "Видалити з бажаного" : "Додати до бажаного") *@
-                    </button>
+                        @(Model.IsInWishlist ? "Видалити з бажаного" : "Додати до бажаного")
+                    </button> *@
+
+                    @* <form asp-controller="Wishlist" asp-action="AddToWishlist" method="post">
+                        <input type="hidden" name="plantId" value="@Model.PlantId" />
+                        <button type="submit" class="btn @(Model.IsInWishlist ? "btn-green" : "btn-outline-green")"
+                                onclick="toggleWishlist(@Model.PlantId)">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </form> *@
+
                 </div>
-                @*<a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
-                
+                @* <a href="#" class="btn btn-outline-green"><i class="bi bi-heart"></i></a> *@
+                <partial name="_WishlistButton" model="@Model.PlantId" />
             </div>
         </div>
     </div>
     <div class="col-12 mt-3 py-3">
-        <div class="border-bottom">
+        @* <div class="border-bottom">
             <ul class="nav nav-underline text-secondary">
                 <li class="nav-item"><a href="#" class="nav-link active">Опис продукту</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Відгуки (19)</a></li>
             </ul>
+        </div> *@
+
+        <input type="hidden" id="PlantId" value="@Model.PlantId" />
+
+        <div class="product-tabs">
+            <div class="tabs-buttons">
+                <button class="tab-button active" data-tab="description">
+                    Опис продукту
+                </button>
+                <button class="tab-button" data-tab="reviews">
+                    Відгуки (@Model.Reviews?.Count)
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="description" class="tab-pane active">
+                    <p>@Model.Description</p>
+                </div>
+                <div id="reviews" class="tab-pane">
+                    <!-- Відгуки будуть завантажені через AJAX -->
+                </div>
+            </div>
         </div>
-        <p></p>
-            @Model.Description
+
+       @*  <div class="product-tabs">
+            <div class="tabs-buttons">
+                <button class="tab-button active" data-tab="description">Опис продукту</button>
+                <button class="tab-button" data-tab="loadReviews">
+                    Відгуки (@Model.Reviews.Count)
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="description" class="tab-pane active">
+                    @Model.Description
+                </div>
+                <div id="reviews" class="tab-pane">
+                    <!-- Відгуки завантажуться сюди через AJAX -->
+                </div>
+            </div>
+        </div> *@
+
+        @* <p></p>
+            @Model.Description *@
     </div>
     @if(Model.RelatedPlants.Count() != 0)
     {
@@ -216,25 +289,58 @@
                 });
             });
 
-            function toggleWishlist(plantId) {
-                const isInWishlist = document.querySelector('.wishlist-btn').classList.contains('active');
-                const url = isInWishlist ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+            // function loadReviews(plantId) {
+            //     $.get(`/Review/GetReviews?plantId=${plantId}`, function (data) {
+            //         $('#reviews').html(data);
+            //     });
+            // }
 
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ plantId: plantId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const btn = document.querySelector('.wishlist-btn');
-                        btn.classList.toggle('active');
-                        btn.textContent = isInWishlist ? 'Додати до бажаного' : 'Видалити з бажаного';
-                    }
-                });
-            }
+            // $(document).ready(function () {
+            //     Обробка відправки форми відгуку
+            //     $('#reviewForm').on('submit', function (e) {
+            //         e.preventDefault();
+
+            //         $.ajax({
+            //             url: '/Review/AddReview',
+            //             type: 'POST',
+            //             data: $(this).serialize(),
+            //             success: function () {
+            //                 loadReviews($('#plantId').val());
+            //                 Очищаємо форму
+            //                 $('#reviewForm')[0].reset();
+            //                 toastr.success('Відгук додано успішно');
+            //             },
+            //             error: function () {
+            //                 toastr.error('Помилка при додаванні відгуку');
+            //             }
+            //         });
+            //     });
+
+            //     Завантажуємо відгуки при кліку на таб
+            //     $('.tab-button[data-tab="reviews"]').click(function () {
+            //         loadReviews($('#plantId').val());
+            //     });
+            // });
+
+            // function toggleWishlist(plantId) {
+            //     const isInWishlist = document.querySelector('.wishlist-btn').classList.contains('active');
+            //     const url = isInWishlist ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+            //     fetch(url, {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         body: JSON.stringify({ plantId: plantId })
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         if (data.success) {
+            //             const btn = document.querySelector('.wishlist-btn');
+            //             btn.classList.toggle('active');
+            //             btn.textContent = isInWishlist ? 'Додати до бажаного' : 'Видалити з бажаного';
+            //         }
+            //     });
+            // }
     </script>
 }

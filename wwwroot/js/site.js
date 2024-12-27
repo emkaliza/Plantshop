@@ -65,3 +65,201 @@ document.addEventListener('click', function (e) {
         searchForm.classList.remove('active');
     }
 });
+
+/*function toggleWishlist(button, plantId) {
+    // Визначаємо, чи товар вже в списку бажань
+    const isInWishlist = button.querySelector('i').classList.contains('-fill');
+
+    const url = isInWishlist
+        ? '/Wishlist/RemoveFromWishlist'
+        : '/Wishlist/AddToWishlist';
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: { plantId: plantId },
+        success: function (response) {
+            if (response.success) {
+                // Змінюємо іконку серця
+                const icon = button.querySelector('i');
+                icon.classList.toggle('');
+                icon.classList.toggle('-fill');
+
+                // Можна додати повідомлення про успішну операцію
+                *//*toastr.success(isInWishlist
+                    ? 'Видалено зі списку бажань'
+                    : 'Додано до списку бажань');*//*
+            }
+        },
+        error: function () {
+            // Обробка помилок
+            toastr.error('Сталася помилка. Спробуйте пізніше.');
+        }
+    });
+}*/
+
+/*function toggleWishlist(button, plantId) {
+    const isActive = button.classList.contains('active');
+    const url = isActive ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+        },
+        body: JSON.stringify({ plantId: plantId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                button.classList.toggle('active');
+                const icon = button.querySelector('i');
+                icon.classList.toggle('');
+                icon.classList.toggle('-fill');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}*/
+
+function toggleWishlist(button, plantId) {
+    const isActive = button.classList.contains('active');
+    const url = isActive ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+    // Додаємо антифоргері токен
+    const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+    const formData = new FormData();
+    formData.append('plantId', plantId);
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'RequestVerificationToken': tokenElement ? tokenElement.value : '',
+        },
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                button.classList.toggle('active');
+                const icon = button.querySelector('i');
+                icon.classList.toggle('');
+                icon.classList.toggle('-fill');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Помилка при оновленні списку бажань');
+        });
+}
+
+/*function toggleWishlist(button, plantId) {
+    const isActive = button.classList.contains('active');
+    const url = isActive ? '/Wishlist/RemoveFromWishlist' : '/Wishlist/AddToWishlist';
+
+    // Отримуємо токен
+    const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+
+    fetch(url + '?plantId=' + plantId, {  // Змінили спосіб передачі plantId
+        method: 'POST',
+        headers: {
+            'RequestVerificationToken': tokenElement ? tokenElement.value : '',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                button.classList.toggle('active');
+                const icon = button.querySelector('i');
+                icon.classList.toggle('');
+                icon.classList.toggle('-fill');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Помилка при оновленні списку бажань');
+        });
+}
+*/
+$(document).ready(function () {
+    // Функція для перемикання табів
+    function switchTab(tabId) {
+        // Видаляємо активний клас з усіх кнопок
+        $('.tab-button').removeClass('active');
+        // Додаємо активний клас потрібній кнопці
+        $(`.tab-button[data-tab="${tabId}"]`).addClass('active');
+
+        // Ховаємо всі контентні блоки
+        $('.tab-pane').removeClass('active');
+        // Показуємо потрібний блок
+        $(`#${tabId}`).addClass('active');
+
+        // Якщо це вкладка з відгуками, завантажуємо їх
+        if (tabId === 'reviews') {
+            const plantId = $('#PlantId').val();
+            loadReviews(plantId);
+        }
+    }
+
+    // Обробник кліку по кнопках табів
+    $('.tab-button').click(function () {
+        const tabId = $(this).data('tab');
+        switchTab(tabId);
+    });
+
+    // Обробка форми відгуку
+    $(document).on('submit', '#reviewForm', function (e) {
+        e.preventDefault();
+        console.log('Form submitted');
+
+        const formData = {
+            plantId: $('#plantId').val(),
+            rating: $('input[name="rating"]:checked').val(),
+            comment: $('#comment').val()
+        };
+
+        // Перевірка наявності рейтингу
+        if (!formData.rating) {
+            alert('Будь ласка, виберіть рейтинг');
+            return;
+        }
+
+        $.ajax({
+            url: '/Review/AddReview',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Перезавантажуємо відгуки
+                loadReviews($('#plantId').val());
+
+                // Очищаємо форму
+                $('#reviewForm')[0].reset();
+
+                // Показуємо повідомлення про успіх
+                alert('Відгук успішно додано!');
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Помилка при додаванні відгуку. Спробуйте пізніше.');
+            }
+        });
+    });
+
+    // Функція завантаження відгуків
+    function loadReviews(plantId) {
+        $.get(`/Review/GetReviews?plantId=${plantId}`, function (data) {
+            $('#reviews').html(data);
+        });
+    }
+});
