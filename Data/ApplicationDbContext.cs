@@ -22,6 +22,8 @@ namespace Plantshop.Data
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -135,6 +137,35 @@ namespace Plantshop.Data
                    .WithMany(p => p.Wishlists)
                    .HasForeignKey(w => w.PlantId)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Post>(entity =>
+            {
+                entity.HasOne(p => p.BlogCategory)
+                    .WithMany(c => c.Posts)
+                    .HasForeignKey(p => p.BlogCategoryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(p => p.Author)
+                    .WithMany()
+                    .HasForeignKey(p => p.AuthorId)
+                    .OnDelete(DeleteBehavior.SetNull);
+
+                entity.Property(p => p.Slug)
+                    .IsRequired()
+                    .HasMaxLength(200);
+
+                entity.HasIndex(p => p.Slug)
+                    .IsUnique();
+            });
+
+            modelBuilder.Entity<BlogCategory>(entity =>
+            {
+                entity.Property(c => c.Slug)
+                    .HasMaxLength(100);
+
+                entity.HasIndex(c => c.Slug)
+                    .IsUnique();
+            });
 
             // Indexes
             modelBuilder.Entity<Plant>()

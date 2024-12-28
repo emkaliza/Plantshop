@@ -1,0 +1,20 @@
+﻿@using Plantshop.Models
+@model Post
+
+<div class="container mt-4">
+    <article>
+        <h1>@Model.Title</h1>
+        <div class="metadata mb-4">
+            <span>Автор: @Model.Author?.UserName</span> |
+            <span>Опубліковано: @Model.PublishedAt.ToString("dd.MM.yyyy")</span> |
+            <span>Категорія: <a asp-action="Category" asp-route-slug="@Model.BlogCategory.Slug">@Model.BlogCategory.Name</a></span>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="~/@Model.ImageUrl" class="img-fluid mb-4" alt="@Model.Title">
+        }
+        <div class="content">
+            @Html.Raw(Model.Content)
+        </div>
+    </article>
+</div>

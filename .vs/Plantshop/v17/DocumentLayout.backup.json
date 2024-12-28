@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\User\\RiderProjects\\Plantshop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\wishlist\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\wishlist\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\areas\\admin\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:areas\\admin\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\areas\\admin\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:areas\\admin\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\areas\\admin\\controllers\\plantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:areas\\admin\\controllers\\plantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\home\\plantdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\home\\plantdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\areas\\admin\\views\\plants\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:areas\\admin\\views\\plants\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\views\\home\\post.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:views\\home\\post.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|c:\\users\\user\\riderprojects\\plantshop\\models\\blogcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6A5AEAC-C6C3-4EEF-BB00-B2E4B050C480}|Plantshop.csproj|solutionrelative:models\\blogcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -101,6 +105,10 @@
               "Name": "ST:1299984937:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:2068620878:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "CategoriesController.cs",
@@ -108,101 +116,113 @@
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\CategoriesController.cs",
               "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "Areas\\Admin\\Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T16:19:20.373Z",
+              "WhenOpened": "2024-12-27T21:53:12.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Views\\Categories\\Index.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Categories\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Views\\Categories\\Index.cshtml",
-              "RelativeToolTip": "Areas\\Admin\\Views\\Categories\\Index.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-27T16:19:04.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Wishlist\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Wishlist\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Wishlist\\Index.cshtml*",
-              "RelativeToolTip": "Views\\Wishlist\\Index.cshtml*",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-27T14:57:16.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADQAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-27T01:24:27.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlantDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\PlantDetails.cshtml",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\PlantDetails.cshtml",
-              "RelativeToolTip": "Views\\Home\\PlantDetails.cshtml",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAF0AAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-27T01:08:07.304Z",
+              "Title": "PlantsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Controllers\\PlantsController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\PlantsController.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Controllers\\PlantsController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\PlantsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-27T21:09:15.646Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAANMAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-27T01:00:00.63Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Views\\Plants\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Plants\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Areas\\Admin\\Views\\Plants\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Plants\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-27T21:08:14.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Post.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Post.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Post.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Post.cshtml",
+              "RelativeToolTip": "Views\\Home\\Post.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-27T18:39:11.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Blog.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Blog.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Blog.cshtml",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Views\\Home\\Blog.cshtml",
+              "RelativeToolTip": "Views\\Home\\Blog.cshtml",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAKcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-27T18:36:06.068Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "WishlistController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\WishlistController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WishlistController.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\WishlistController.cs",
-              "RelativeToolTip": "Controllers\\WishlistController.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAswLUAAAAAAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAuwAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T00:44:39.538Z",
+              "WhenOpened": "2024-12-27T18:35:31.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Wishlist.cs",
-              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Wishlist.cs",
-              "RelativeDocumentMoniker": "Models\\Wishlist.cs",
-              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Wishlist.cs",
-              "RelativeToolTip": "Models\\Wishlist.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "Controllers\\BlogController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T00:44:12.712Z",
+              "WhenOpened": "2024-12-27T17:56:31.705Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Post.cs",
+              "RelativeDocumentMoniker": "Models\\Post.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\Post.cs",
+              "RelativeToolTip": "Models\\Post.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwB0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-27T17:28:15.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BlogCategory.cs",
+              "DocumentMoniker": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\BlogCategory.cs",
+              "RelativeDocumentMoniker": "Models\\BlogCategory.cs",
+              "ToolTip": "C:\\Users\\User\\RiderProjects\\Plantshop\\Models\\BlogCategory.cs",
+              "RelativeToolTip": "Models\\BlogCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-27T17:28:00.799Z"
             }
           ]
         }

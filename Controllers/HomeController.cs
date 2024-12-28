@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Plantshop.Data;
+using Plantshop.Models;
 using Plantshop.ViewModels;
 using PlantShop.Models;
 using System.Diagnostics;
@@ -250,9 +252,29 @@ namespace Plantshop.Controllers
             return View();
         }
 
-        public IActionResult Blog()
+        public async Task<IActionResult> Blog(int? pageNumber)
         {
-            return View();
+            var pageSize = 6;
+
+            var posts = _context.Posts
+                .Include(p => p.BlogCategory)
+                .Include(p => p.Author)
+                .Where(p => p.IsPublished)
+                .OrderByDescending(p => p.PublishedAt)
+                .AsQueryable();
+
+            return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
+        }
+
+        public async Task<IActionResult> Post(string slug)
+        {
+            var post = await _context.Posts
+                .Include(p => p.BlogCategory)
+                .Include(p => p.Author)
+                .FirstOrDefaultAsync(p => p.Slug == slug && p.IsPublished);
+
+            if (post == null) return NotFound();
+            return View(post);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
