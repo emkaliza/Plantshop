@@ -7,6 +7,8 @@ namespace Plantshop.ViewModels
         public PaginatedList<Plant>? Plants { get; set; }
         public ICollection<CategoryViewModel>? Categories { get; set; }
 
+        public List<Models.Post> Posts { get; set; }
+
         public int? CurrentCategoryId { get; set; }
         public decimal CurrentMinPrice { get; set; }
         public decimal CurrentMaxPrice { get; set; }

@@ -143,9 +143,6 @@
                                 <button type="button" class="btn p-0 green" onclick="addToCart(@plant.PlantId, 1)">
                                     <i class="bi bi-cart"></i>
                                 </button>
-                                @* <button type="button" class="btn p-0 green">
-                                    <i class="bi bi-heart"></i>
-                                </button> *@
                                 <partial name="_WishlistButton" model="@plant.PlantId" />
 
                                 <a asp-action="PlantDetails" asp-route-id="@plant.PlantId" class="btn p-0 green">
@@ -195,48 +192,18 @@
 <h2 class="text-center">Наші публікації в блозі</h2>
 <p class="text-center">Ми - інтернет-магазин рослин, що пропонує широкий асортимент дешевих і модних рослин.</p>
 <div class="row">
-    <div class="col">
-        <div class="card h-100" style="width: 18rem;">
-            <img src="~/img/01.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><small class="green"><b>12 вересня | Читати за 6 хвилин</b></small></p>
-                <h5 class="card-title h5">Кактуси та сукуленти Поради по догляду</h5>
-                <p class="card-text">Кактуси - сукуленти - прості у догляді рослини для будь-якого будинку або внутрішнього дворика. </p>
-                <a href="#" class="nav-link"><b>Читати далі<i class="bi bi-arrow-right"></i></b></a>
+    @foreach (var post in Model.Posts)
+    {
+        <div class="col">
+            <div class="card h-100" style="width: 18rem;">
+                <img src="~/@post.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><small class="green"><b>@post.PublishedAt.ToString("dd.MM.yyyy")</b></small></p>
+                    <h5 class="card-title h5">@post.Title</h5>
+                    <p class="card-text">@post.Summary</p>
+                    <a asp-action="Post" asp-route-slug="@post.Slug" class="nav-link"><b>Читати далі<i class="bi bi-arrow-right"></i></b></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card h-100" style="width: 18rem;">
-            <img src="~/img/02.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><small class="green"><b>13 вересня | Читати за 2 хвилин</b></small></p>
-                <h5 class="card-title">10 кращих сукулентів для вашої оселі</h5>
-                <p class="card-text">Найкраще в підвісних кошиках. Віддає перевагу середньому та високому освітленню.</p>
-                <a href="#" class="nav-link"><b>Читати далі<i class="bi bi-arrow-right"></i></b></a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100" style="width: 18rem;">
-            <img src="~/img/03.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><small class="green"><b>15 вересня | Читати за 3 хвилин</b></small></p>
-                <h5 class="card-title">Кактуси та сукуленти Поради по догляду</h5>
-                <p class="card-text">Кактуси та сукуленти чудово почуваються в контейнерах, і оскільки більшість з них...</p>
-                <a href="#" class="nav-link"><b>Читати далі<i class="bi bi-arrow-right"></i></b></a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100" style="width: 18rem;">
-            <img src="~/img/04.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text"><small class="green"><b>15 вересня | Читати за 3 хвилин</b></small></p>
-                <h5 class="card-title">Кращі кімнатні рослини Кімната за кімнатою</h5>
-                <p class="card-text">Користь від кімнатних рослин безмежна. На додаток до.</p>
-                <a href="#" class="nav-link"><b>Читати далі<i class="bi bi-arrow-right"></i></b></a>
-            </div>
-        </div>
-    </div>
+    }
 </div>

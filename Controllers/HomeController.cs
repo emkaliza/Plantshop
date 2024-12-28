@@ -124,6 +124,14 @@ namespace Plantshop.Controllers
         {
             int pageSize = 6;
 
+            var posts = await _context.Posts
+                .Include(p => p.BlogCategory)
+                .Include(p => p.Author)
+                .Where(p => p.IsPublished)
+                .OrderByDescending(p => p.PublishedAt)
+                .Take(4)
+                .ToListAsync();
+
             return new HomeIndexViewModel
             {
                 Plants = await PaginatedList<Plant>.CreateAsync(query, pageNumber ?? 1, pageSize),
@@ -141,7 +149,8 @@ namespace Plantshop.Controllers
                 CurrentSortOrder = sortOrder,
                 IsNew = isNew ?? false,
                 IsOnSale = isOnSale ?? false,
-                SearchTerm = searchTerm
+                SearchTerm = searchTerm,
+                Posts = posts
             };
         }
 
@@ -252,18 +261,30 @@ namespace Plantshop.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Blog(int? pageNumber)
+        public async Task<IActionResult> Blog(int? pageNumber, int? categoryId)
         {
-            var pageSize = 6;
+            var pageSize = 3;
 
-            var posts = _context.Posts
+            var query = _context.Posts
                 .Include(p => p.BlogCategory)
                 .Include(p => p.Author)
                 .Where(p => p.IsPublished)
                 .OrderByDescending(p => p.PublishedAt)
                 .AsQueryable();
 
-            return View(await PaginatedList<Post>.CreateAsync(posts, pageNumber ?? 1, pageSize));
+            // Фільтрація за категорією
+            if (categoryId.HasValue)
+            {
+                query = query.Where(p => p.BlogCategoryId == categoryId.Value);
+            }
+
+            var viewModel = new BlogIndexViewModel
+            {
+                Posts = await PaginatedList<Post>.CreateAsync(query, pageNumber ?? 1, pageSize),
+                BlogCategories = await _context.BlogCategories.ToListAsync()
+            };
+
+            return View(viewModel);
         }
 
         public async Task<IActionResult> Post(string slug)
