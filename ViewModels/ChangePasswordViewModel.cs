@@ -4,18 +4,20 @@ namespace Plantshop.ViewModels
 {
     public class ChangePasswordViewModel
     {
-        [Required(ErrorMessage = "Поточний пароль є обов'язковим")]
+        [Required(ErrorMessage = "Введіть поточний пароль")]
+        [Display(Name = "Поточний пароль")]
         [DataType(DataType.Password)]
         public string CurrentPassword { get; set; }
 
-        [Required(ErrorMessage = "Новий пароль є обов'язковим")]
-        [StringLength(100, ErrorMessage = "Пароль має бути щонайменше {2} символів", MinimumLength = 6)]
+        [Required(ErrorMessage = "Введіть новий пароль")]
+        [Display(Name = "Новий пароль")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Пароль повинен містити мінімум 6 символів")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [Required(ErrorMessage = "Підтвердження пароля є обов'язковим")]
-        [Compare("NewPassword", ErrorMessage = "Паролі не збігаються")]
         [DataType(DataType.Password)]
+        [Display(Name = "Підтвердження паролю")]
+        [Compare("NewPassword", ErrorMessage = "Паролі не співпадають")]
         public string ConfirmPassword { get; set; }
     }
 }

@@ -39,7 +39,7 @@
                             @if (SignInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item ms-5">
-                                    <a asp-area="Customer" asp-controller="Customer" asp-action="Index" class="nav-link">Кабінет</a>
+                                    <a asp-area="Account" asp-controller="Profile" asp-action="Index" class="nav-link">Кабінет</a>
                                 </li>
                             }
                         </ul>
@@ -206,6 +206,16 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/auth.js" asp-append-version="true"></script>
     <script src="~/js/cart.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        @if (TempData["ShowLoginModal"] != null && (bool)TempData["ShowLoginModal"])
+        {
+            <text>
+                        $('#loginModal').modal('show');
+            </text>
+        }
+            });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

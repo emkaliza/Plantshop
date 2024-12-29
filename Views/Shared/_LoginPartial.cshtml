@@ -61,18 +61,18 @@ else
                             <input type="checkbox" class="form-check-input" asp-for="@loginModel.RememberMe">
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    @* <div class="row mb-3">
                         <div class="col-sm-8 mx-auto">
                             <a asp-controller="Account" asp-action="ForgotPassword" class="nav-link green text-end">
                                 Забули пароль?
                             </a>
                         </div>
-                    </div>
+                    </div> *@
                     <button type="submit" class="btn btn-green col-8 offset-2 my-3">Увійти</button>
                 </form>
             </div>
             <div class="modal-footer border-top-0 border-bottom-green-1">
-                <p class="col-sm-8 text-sm-center mx-auto mb-3">Або увійдіть за допомогою:</p>
+               @*  <p class="col-sm-8 text-sm-center mx-auto mb-3">Або увійдіть за допомогою:</p>
                 <div class="col-sm-8 mx-auto">
                     <form asp-controller="Account" asp-action="ExternalLogin" method="post">
                         @Html.AntiForgeryToken()
@@ -85,7 +85,7 @@ else
                             <p class="pt-sm-3">Facebook</p>
                         </button>
                     </form>
-                </div>
+                </div> *@
             </div>
         </div>
     </div>

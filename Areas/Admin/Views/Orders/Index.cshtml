@@ -72,9 +72,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User.Id)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a>
+            <td class="d-flex justify-content-center">
+                <a asp-action="Edit" asp-route-id="@item.OrderId" class="btn btn-sm btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-sm btn-secondary">Details</a>
                 <button onclick="deleteOrder(@item.OrderId)" class="btn btn-sm btn-danger">Видалити</button>
             </td>
         </tr>

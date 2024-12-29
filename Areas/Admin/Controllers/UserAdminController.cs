@@ -30,7 +30,7 @@ namespace PlantShop.Areas.Admin.Controllers
                 .Include(u => u.Orders)
                 .Include(u => u.Reviews)
                 .Include(u => u.Cart)
-                .Include(u => u.Favorites)
+                .Include(u => u.Wishlists)
                 .AsQueryable();
 
             return View(await PaginatedList<AppUser>.CreateAsync(users, pageNumber ?? 1, pageSize));
@@ -42,7 +42,7 @@ namespace PlantShop.Areas.Admin.Controllers
                 .Include(u => u.Orders)
                 .Include(u => u.Reviews)
                 .Include(u => u.Cart)
-                .Include(u => u.Favorites)
+                .Include(u => u.Wishlists)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)

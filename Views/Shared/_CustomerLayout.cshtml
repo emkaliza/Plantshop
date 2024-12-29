@@ -27,13 +27,13 @@
                                 <a class="nav-link" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
                             </li>
                             <li class="nav-item ms-5">
-                                <a class="nav-link" href="#">Магазин</a>
+                                <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Index">Магазин</a>
                             </li>
                             <li class="nav-item mx-5">
-                                <a class="nav-link" href="#">Догляд</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="PlantCare">Догляд</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Блог</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Blog">Блог</a>
                             </li>
                         </ul>
                         <div class="search-container">
@@ -46,6 +46,11 @@
                                        id="searchInput">
                             </form>
                         </div>
+                        <a asp-area="" asp-controller="Wishlist" asp-action="Index"><img src="~/img/heart.svg" alt="" height="26"></a>
+                        <a asp-area="" asp-controller="Cart" asp-action="Index" class="mx-4">
+                            <img src="~/img/cart.svg" alt="">
+                            <span class="position-absolute translate-middle badge bg-green rounded-pill cart-counter">0</span>
+                        </a>
                         <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout">
                             <button type="submit" class="btn btn-green px-4">
                                 <span class="d-flex align-items-center gap-1">
@@ -67,30 +72,30 @@
                             </p>
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                                 <li class="nav-item">
-                                    <a asp-area="Customer" asp-controller="Customer" asp-action="Index" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Customer" ? "green" : "text-dark")">
+                                    <a asp-area="Account" asp-controller="Profile" asp-action="Index" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Profile" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "green" : "text-dark")">
                                         <i class="fs-5 bi-person me-2"></i><span class="ms-1 d-none d-sm-inline">Профіль</span>
                                     </a>
                                 </li>
-                                <li class=nav-item>
+                                @* <li class=nav-item>
                                     <a asp-area="" asp-controller="" asp-action="" class="nav-link px-0 align-middle @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
                                         <i class="fs-5 bi-geo me-2"></i> <span class="ms-1 d-none d-sm-inline">Адреса</span>
                                     </a>
-                                </li>
+                                </li> *@
                                 <li class="nav-item">
-                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                    <a asp-area="Account" asp-controller="Profile" asp-action="Orders" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Profile" && ViewContext.RouteData.Values["Action"].ToString() == "Orders" ? "green" : "text-dark")">
                                         <i class="fs-5 bi-cart2 me-1"></i> <span class="ms-1 d-none d-sm-inline">Замовлення</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
+                                    <a asp-area="Account" asp-controller="Profile" asp-action="Wishlist" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "Profile" && ViewContext.RouteData.Values["Action"].ToString() == "Wishlist" ? "green" : "text-dark")">
                                         <i class="fs-5 bi-heart me-2"></i><span class="ms-1 d-none d-sm-inline">Бажання</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                @* <li class="nav-item">
                                     <a asp-area="" asp-controller="" asp-action="" class="nav-link align-middle px-0 @(ViewContext.RouteData.Values["Controller"].ToString() == "" ? "green" : "text-dark")">
                                         <i class="fs-5 bi-exclamation-triangle me-1"></i> <span class="ms-1 d-none d-sm-inline">Підтримка</span>
                                     </a>
-                                </li>
+                                </li> *@
                             </ul>
                         </div>
                     </div>

@@ -1,0 +1,81 @@
+﻿@model PlantShop.Models.AppUser
+@{
+    ViewData["Title"] = "Профіль користувача";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="container py-5">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-green text-white">
+                    <h3 class="card-title mb-0">Профіль користувача</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Ім'я:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.FirstName
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Прізвище:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.LastName
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Email:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.Email
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Телефон:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.PhoneNumber
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Адреса:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.Address
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>Дата реєстрації:</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Model.RegistrationDate.ToString("dd.MM.yyyy HH:mm")
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Edit" class="btn btn-green">Редагувати профіль</a>
+                        <a asp-action="ChangePassword" class="btn btn-outline-green">Змінити пароль</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

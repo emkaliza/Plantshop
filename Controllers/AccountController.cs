@@ -22,6 +22,14 @@ namespace PlantShop.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            TempData["ShowLoginModal"] = true;
+
+            return RedirectToAction("Index", "Home"); ;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromForm] LoginViewModel model)
@@ -42,7 +50,7 @@ namespace PlantShop.Controllers
                     _logger.LogInformation($"Користувач {user.Email} успішно увійшов в систему.");
                     if (user.Role == "Admin")
                         return Json(new { success = true, redirectUrl = Url.Action("Index", "Admin", new { area = "Admin" }) });
-                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Customer", new { area = "Customer"}) });
+                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Profile", new { area = "Account"}) });
                 }
 
                 if (result.IsLockedOut)
@@ -90,7 +98,7 @@ namespace PlantShop.Controllers
                     await _userManager.AddToRoleAsync(user, "Customer");
                     // Автоматичний вхід після реєстрації
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Customer", new { area = "Customer" }) });
+                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Profile", new { area = "Account" }) });
                 }
 
                 var errors = result.Errors.Select(e => e.Description);

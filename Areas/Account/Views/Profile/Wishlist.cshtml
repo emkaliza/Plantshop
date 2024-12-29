@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Plant>
+
+@{
+    ViewData["Title"] = "Список Бажаного";
+}
+
+@Html.AntiForgeryToken()
+
+<div class="wishlist-container">
+    @if (Model.Any())
+    {
+        <div class="table-responsive mt-5">
+            <table class="table">
+                <thead>
+                    <tr class="border-top">
+                        <th class="text-center fw-bold">Фото</th>
+                        <th class="text-center fw-bold">Назва</th>
+                        <th class="text-center fw-bold">Ціна</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="wish-@item.PlantId" class="align-baseline">
+                            <td class="text-center">
+                                <a href="/Home/PlantDetails/@item.PlantId">
+                                    <img src="~/@item.ImageUrl" alt="@item.Name" style="max-width: 100px;" class="img-thumbnail" />
+                                </a>
+                            </td>
+                            <td class="text-center">@item.Name</td>
+                            <td class="text-center">
+                                <span>@item.CurrentPrice.ToString("C2")</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h3 class="green m-5">Ваш список бажань порожній</h3>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function deleteWishItem(plantId) {
+            if (confirm('Ви впевнені що хочете видалити?')) {
+                $.ajax({
+                    url: '/Wishlist/RemoveFromWishList/' + plantId,
+                    type: 'POST',
+                    data: {
+                        "__RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val(),
+                        plantId: plantId
+                    },
+                    success: function () {
+                        // Видаляємо рядок з таблиці
+                        $('#wish-' + plantId).remove();
+                    }
+                });
+            }
+        }
+    </script>
+}
